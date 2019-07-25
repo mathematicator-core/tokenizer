@@ -1,0 +1,4 @@
+services:
+	- Mathematicator\Tokenizer\Tokenizer(%math%)
+	- Mathematicator\Tokenizer\TokensToObject
+	- Mathematicator\Tokenizer\TokensToLatex(%math.functions%)

@@ -1,0 +1,24 @@
+{
+	"name": "mathematicator-core/tokenizer",
+	"description": "Math Tokenizer",
+	"homepage": "https://github.com/mathematicator-core/tokenizer",
+	"authors": [
+		{
+			"name": "Jan Barášek",
+			"homepage": "http://baraja.cz"
+		}
+	],
+	"require": {
+		"php": ">=7.1",
+		"nette/utils": "^3.0",
+		"nette/tokenizer": "^3.0",
+		"mathematicator-core/engine": "~1.0",
+		"mathematicator-core/numbers": "~1.0"
+	},
+	"autoload": {
+		"classmap": [
+			"src/"
+		]
+	},
+	"minimum-stability": "stable"
+}
