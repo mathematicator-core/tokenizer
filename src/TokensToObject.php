@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
-use App\VikiTron\Model\Number\NumberHelper;
+use Mathematicator\NumberHelper;
 use Mathematicator\Numbers\NumberFactory;
 use Mathematicator\Tokenizer\Token\BaseToken;
 use Mathematicator\Tokenizer\Token\ComparatorToken;

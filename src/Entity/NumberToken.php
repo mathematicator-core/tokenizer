@@ -1,6 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mathematicator\Tokenizer\Token;
+
 
 use Mathematicator\Engine\MathematicatorException;
 use Mathematicator\Numbers\SmartNumber;
