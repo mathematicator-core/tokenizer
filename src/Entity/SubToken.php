@@ -9,6 +9,7 @@ use Mathematicator\Engine\MathematicatorException;
 use Mathematicator\Tokenizer\Tokens;
 use Mathematicator\Tokenizer\TokensToObject;
 use Nette\SmartObject;
+use Nette\Tokenizer\Token;
 
 class SubToken extends BaseToken
 {
@@ -41,7 +42,10 @@ class SubToken extends BaseToken
 	{
 		foreach ($tokens as $token) {
 			if (!$token instanceof IToken && $token !== null) {
-				throw new MathematicatorException('All tokens must be instance of [' . IToken::class . '], given: ' . json_encode($token));
+				throw new MathematicatorException(
+					'All tokens must be instance of "' . IToken::class . '". '
+					. json_encode($token) . ' given.'
+				);
 			}
 		}
 
@@ -51,7 +55,7 @@ class SubToken extends BaseToken
 	/**
 	 * Set token array and convert to object array.
 	 *
-	 * @param string[][]|int[][] $tokens
+	 * @param Token[] $tokens
 	 * @param int $currentPosition
 	 * @return int
 	 */
@@ -64,9 +68,9 @@ class SubToken extends BaseToken
 		for ($iterator = $currentPosition; isset($tokens[$iterator]); $iterator++) {
 			$token = $tokens[$iterator];
 
-			if ($token[2] === Tokens::M_LEFT_BRACKET || $token[2] === Tokens::M_FUNCTION) {
+			if ($token->type === Tokens::M_LEFT_BRACKET || $token->type === Tokens::M_FUNCTION) {
 				$level++;
-			} elseif ($token[2] === Tokens::M_RIGHT_BRACKET) {
+			} elseif ($token->type === Tokens::M_RIGHT_BRACKET) {
 				$level--;
 			}
 
