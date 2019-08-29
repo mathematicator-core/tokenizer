@@ -5,8 +5,12 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
+use Nette\StaticClass;
+
 class Tokens
 {
+
+	use StaticClass;
 
 	public const M_NUMBER = 'number';
 	public const M_ROMAN_NUMBER = 'number_roman';

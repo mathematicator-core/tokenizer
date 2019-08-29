@@ -12,6 +12,8 @@
 		"php": ">=7.1",
 		"nette/utils": "^3.0",
 		"nette/tokenizer": "^3.0",
+		"nette/di": "^3.0",
+		"nette/tester": "^2.0",
 		"mathematicator-core/engine": "~1.0",
 		"mathematicator-core/numbers": "~1.0"
 	},

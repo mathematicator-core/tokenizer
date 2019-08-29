@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Token;
 
 
+use Mathematicator\Engine\MathematicatorException;
 use Mathematicator\Numbers\SmartNumber;
 
 class ComplexNumberToken extends BaseToken
@@ -20,6 +21,10 @@ class ComplexNumberToken extends BaseToken
 	 */
 	private $complexNumber;
 
+	/**
+	 * @param SmartNumber $realNumber
+	 * @param SmartNumber $complexNumber
+	 */
 	public function __construct(SmartNumber $realNumber, SmartNumber $complexNumber)
 	{
 		$this->realNumber = $realNumber;
@@ -27,27 +32,35 @@ class ComplexNumberToken extends BaseToken
 	}
 
 	/**
-	 * @return Number
+	 * @return SmartNumber
 	 */
 	public function getRealNumber(): SmartNumber
 	{
 		return $this->realNumber;
 	}
 
-	public function setRealNumber($value): void
+	/**
+	 * @param string $value
+	 * @throws MathematicatorException
+	 */
+	public function setRealNumber(string $value): void
 	{
 		$this->realNumber->setValue($value);
 	}
 
 	/**
-	 * @return Number
+	 * @return SmartNumber
 	 */
 	public function getComplexNumber(): SmartNumber
 	{
 		return $this->complexNumber;
 	}
 
-	public function setComplexNumber($value): void
+	/**
+	 * @param string $value
+	 * @throws MathematicatorException
+	 */
+	public function setComplexNumber(string $value): void
 	{
 		$this->complexNumber->setValue($value);
 	}

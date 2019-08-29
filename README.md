@@ -54,13 +54,13 @@ In `common.neon` simply define parameters:
 ```yaml
 parameters:
     math:
-		functions:
-			- sin
-			- cos
-			- tan
-			- cotan
-			- log
-			- log\d*
-			- ln
-			- sqrt
+        functions:
+            - sin
+            - cos
+            - tan
+            - cotan
+            - log
+            - log\d*
+            - ln
+            - sqrt
 ```

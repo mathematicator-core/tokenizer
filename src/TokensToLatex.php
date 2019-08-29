@@ -46,6 +46,11 @@ class TokensToLatex
 	/**
 	 * @var string[]
 	 */
+	private $beforeReplaceTable;
+
+	/**
+	 * @var string[]
+	 */
 	private $afterReplaceTable;
 
 	/**
@@ -60,14 +65,18 @@ class TokensToLatex
 	 */
 	public function __construct(array $functions)
 	{
+		$this->beforeReplaceTable = [
+			'INF' => '\\infty',
+			'PI' => '\\pi',
+		];
+
 		$this->afterReplaceTable = [
 			'log(\d+)' => '\log_{$1}',
 			'\*' => '\cdot ',
 			'(\d)\\\cdot\s*([a-z])' => '$1$2',
 			'abs\\\left[\(\[\{](.+?)\\\right[\)\]\}]' => '\mid $1 \mid',
 			'\\\(' . implode('|', $functions) . ')\{\\\left\(([^\(\)]+?)\\\right\)\}' => '\\\$1{$2}',
-			'INF' => '\\infty',
-			'PI' => '\\pi',
+			'([+-]?[0-9]*[.]?[0-9]+)[eE]([+-]?[0-9]*[.]?[0-9]+)' => '{$1}^{$2}',
 		];
 	}
 
@@ -157,7 +166,10 @@ class TokensToLatex
 			}
 		}
 
-		return $this->afterReplaceTable($latex);
+		return $this->processReplaceTable(
+			$this->processReplaceTable($latex, $this->beforeReplaceTable),
+			$this->afterReplaceTable
+		);
 	}
 
 	/**
@@ -191,6 +203,7 @@ class TokensToLatex
 	 * @param TokenIterator $iterator
 	 * @param int $level
 	 * @return string
+	 * @throws MathematicatorException
 	 */
 	private function renderFraction(TokenIterator $iterator, int $level): string
 	{
@@ -217,6 +230,7 @@ class TokensToLatex
 	 * @param TokenIterator $iterator
 	 * @param int $level
 	 * @return string
+	 * @throws MathematicatorException
 	 */
 	private function renderPow(TokenIterator $iterator, int $level): string
 	{
@@ -244,16 +258,17 @@ class TokensToLatex
 	}
 
 	/**
-	 * @param string $latex
+	 * @param string $haystack
+	 * @param string[] $replaceTable
 	 * @return string
 	 */
-	private function afterReplaceTable(string $latex): string
+	private function processReplaceTable(string $haystack, array $replaceTable): string
 	{
-		foreach ($this->afterReplaceTable as $key => $value) {
-			$latex = Strings::replace($latex, '/' . $key . '/', $value);
+		foreach ($replaceTable as $key => $value) {
+			$haystack = Strings::replace($haystack, '/' . $key . '/', $value);
 		}
 
-		return $latex;
+		return $haystack;
 	}
 
 }

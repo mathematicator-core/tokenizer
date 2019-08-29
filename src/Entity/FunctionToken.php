@@ -23,7 +23,7 @@ class FunctionToken extends SubToken
 
 	public function setName(string $name): void
 	{
-		$this->name = preg_replace('/\W/', '', $name);
+		$this->name = (string) preg_replace('/\W/', '', $name);
 	}
 
 }

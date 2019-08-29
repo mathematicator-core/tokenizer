@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Token;
 
 
+use Mathematicator\Engine\MathematicatorException;
 use Mathematicator\Numbers\SmartNumber;
 
 class FactorialToken extends BaseToken
@@ -33,10 +34,11 @@ class FactorialToken extends BaseToken
 
 	/**
 	 * @param string $number
+	 * @throws MathematicatorException
 	 */
 	public function setNumber(string $number): void
 	{
-		$this->number->setValue(preg_replace('/\!+$/', '', $number));
+		$this->number->setValue((string) preg_replace('/\!+$/', '', $number));
 	}
 
 }
