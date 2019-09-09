@@ -77,9 +77,11 @@ class QueryToLatexTest extends TestCase
 
 }
 
-$di = Booting::bootForTests()->createContainer();
+if (isset($_SERVER['NETTE_TESTER_RUNNER'])) {
+	$di = Booting::bootForTests()->createContainer();
 
-(new QueryToLatexTest(
-	$di->getByType(Tokenizer::class),
-	$di->getByType(QueryNormalizer::class)
-))->run();
+	(new QueryToLatexTest(
+		$di->getByType(Tokenizer::class),
+		$di->getByType(QueryNormalizer::class)
+	))->run();
+}
