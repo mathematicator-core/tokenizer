@@ -1,11 +1,11 @@
 Robust PHP math Tokenizer
 =========================
 
-Simple library for convert math formula to array of tokens.
+Tokenizer is a simple library used to convert math formulas to arrays of tokens.
 
-> Please help improve this documentation by sending a Pull request.
+> Please help to improve this documentation by sending a Pull request.
 
-Install by Composer:
+Install using Composer:
 
 ```
 composer require mathematicator-core/tokenizer
@@ -16,23 +16,23 @@ Idea
 
 Imagine you can:
 
-- Convert all your math formulas to stream of tokens
+- Convert all your math formulas to a stream of tokens
 - Convert user math input to LaTeX
-- Solve your math problems by calculator
-- Render tokens tree map for debug
+- Solve your math problems using a calculator
+- Render the tokens tree map for debug
 
 How to use
 ----------
 
-Inject `Tokenizer` service by DIC and tokenize your query.
+Inject the `Tokenizer` service through DIC and tokenize your query.
 
 ```php
 $tokenizer = new Tokenizer(/* some dependencies */);
 
-// Convert math formule to array of tokens:
+// Convert math formula to an array of tokens:
 $tokens = $tokenizer->tokenize('(5+3)*(2/(7+3))');
 
-// Now you can convert tokens to more useful format:
+// Now you can convert tokens to a more useful format:
 $objectTokens = $tokenizer->tokensToObject($tokens);
 
 dump($objectTokens); // Return typed tokens with meta data
@@ -49,7 +49,7 @@ Configuration
 
 Tokenizer needs your math configuration.
 
-In `common.neon` simply define parameters:
+In `common.neon` simply define the parameters:
 
 ```yaml
 parameters:
