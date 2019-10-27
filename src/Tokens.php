@@ -5,14 +5,11 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
-use Nette\StaticClass;
-
 class Tokens
 {
 
-	use StaticClass;
-
 	public const M_NUMBER = 'number';
+	public const M_POLYNOMIAL = 'polynomial';
 	public const M_ROMAN_NUMBER = 'number_roman';
 	public const M_VARIABLE = 'variable';
 	public const M_FACTORIAL = 'factorial';
@@ -29,5 +26,13 @@ class Tokens
 	public const M_CONSTANT = 'constant';
 	public const M_PI = 'pi';
 	public const M_OTHER = 'other';
+
+	/**
+	 * @throws \Error
+	 */
+	final public function __construct()
+	{
+		throw new \Error('Class ' . get_class($this) . ' is static and cannot be instantiated.');
+	}
 
 }
