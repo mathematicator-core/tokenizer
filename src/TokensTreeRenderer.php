@@ -7,12 +7,17 @@ namespace Mathematicator\Tokenizer;
 
 use Mathematicator\Tokenizer\Token\IToken;
 use Mathematicator\Tokenizer\Token\SubToken;
-use Nette\StaticClass;
 
 class TokensTreeRenderer
 {
 
-	use StaticClass;
+	/**
+	 * @throws \Error
+	 */
+	final public function __construct()
+	{
+		throw new \Error('Class ' . get_class($this) . ' is static and cannot be instantiated.');
+	}
 
 	/**
 	 * Render simple tree view to HTML.
@@ -26,34 +31,20 @@ class TokensTreeRenderer
 		$return = '';
 
 		foreach ($tokens as $token) {
-			$return .= "\n" . self::renderTabs($level)
+			$return .= "\n" . str_repeat('&nbsp;&nbsp;&nbsp;', $level)
 				. '<span style="color:#c22;background:#f5f5f5;padding:0 6px;border-radius:4px;">'
-				. htmlspecialchars($token->getToken())
-				. '</span>&nbsp;&nbsp;&nbsp;→&nbsp;<span style="font-size:8pt"><span style="color:#aaa;">#'
-				. htmlspecialchars((string) $token->getPosition())
+				. htmlspecialchars($token->getToken(), ENT_QUOTES)
+				. '</span>&nbsp;→&nbsp;<span style="font-size:8pt"><span style="color:#aaa;">#'
+				. htmlspecialchars((string) $token->getPosition(), ENT_QUOTES)
 				. '</span> <span style="color:#3369c1;">'
-				. htmlspecialchars($token->getType())
+				. htmlspecialchars($token->getType(), ENT_QUOTES)
 				. '</span></span>';
 
 			if ($token instanceof SubToken) {
 				$return .= self::render($token->getTokens(), $level + 1);
-				$return .= "\n" . self::renderTabs($level);
+				$return .= "\n" . str_repeat('&nbsp;&nbsp;&nbsp;', $level);
 				$return .= '<span style="color:#c22;background:#f5f5f5;padding:0 6px;border-radius:4px;">)</span>';
 			}
-		}
-
-		return $return;
-	}
-
-	/**
-	 * @param int $count
-	 * @return string
-	 */
-	private static function renderTabs(int $count = 1): string
-	{
-		$return = '';
-		for ($i = 0; $i <= $count; $i++) {
-			$return .= '&nbsp;&nbsp;&nbsp;';
 		}
 
 		return $return;
