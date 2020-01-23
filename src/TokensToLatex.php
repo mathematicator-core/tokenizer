@@ -202,18 +202,18 @@ class TokensToLatex
 		$iterator->next();
 
 		if ($lastToken instanceof SubToken) {
-			$_lastToken = $this->iterator($lastToken->getTokens(), $level);
+			$lastTokenRender = $this->iterator($lastToken->getTokens(), $level);
 		} else {
-			$_lastToken = $lastToken->getToken();
+			$lastTokenRender = $lastToken === null ? '?' : $lastToken->getToken();
 		}
 
 		if ($nextToken instanceof SubToken) {
-			$_nextToken = $this->iterator($nextToken->getTokens(), $level);
+			$nextTokenRender = $this->iterator($nextToken->getTokens(), $level);
 		} else {
-			$_nextToken = $nextToken ? $nextToken->getToken() : '?';
+			$nextTokenRender = $nextToken === null ? '?' : $nextToken->getToken();
 		}
 
-		return '\frac{' . $_lastToken . '}{' . $_nextToken . '}';
+		return '\frac{' . $lastTokenRender . '}{' . $nextTokenRender . '}';
 	}
 
 	/**
@@ -229,22 +229,22 @@ class TokensToLatex
 		$iterator->next();
 
 		if ($lastToken instanceof SubToken) {
-			$downToken = $this->getLeftBracket($level)
+			$downTokenRender = $this->getLeftBracket($level)
 				. $this->iterator($lastToken->getTokens(), $level)
 				. $this->getRightBracket($level);
 		} else {
-			$downToken = $lastToken ? $lastToken->getToken() : '?';
+			$downTokenRender = $lastToken === null ? '?' : $lastToken->getToken();
 		}
 
 		if ($nextToken instanceof SubToken) {
-			$topToken = $this->getLeftBracket($level)
+			$topTokenRender = $this->getLeftBracket($level)
 				. $this->iterator($nextToken->getTokens(), $level)
 				. $this->getRightBracket($level);
 		} else {
-			$topToken = $nextToken ? $nextToken->getToken() : '?';
+			$topTokenRender = $nextToken === null ? '?' : $nextToken->getToken();
 		}
 
-		return '{' . $downToken . '}^{' . $topToken . '}';
+		return '{' . $downTokenRender . '}^{' . $topTokenRender . '}';
 	}
 
 	/**
