@@ -11,10 +11,9 @@ use Mathematicator\Numbers\SmartNumber;
 class FactorialToken extends BaseToken
 {
 
-	/**
-	 * @var SmartNumber
-	 */
+	/** @var SmartNumber */
 	private $number;
+
 
 	/**
 	 * @param SmartNumber $number
@@ -24,6 +23,7 @@ class FactorialToken extends BaseToken
 		$this->number = $number;
 	}
 
+
 	/**
 	 * @return SmartNumber
 	 */
@@ -31,6 +31,7 @@ class FactorialToken extends BaseToken
 	{
 		return $this->number;
 	}
+
 
 	/**
 	 * @param string $number
@@ -40,5 +41,4 @@ class FactorialToken extends BaseToken
 	{
 		$this->number->setValue((string) preg_replace('/\!+$/', '', $number));
 	}
-
 }

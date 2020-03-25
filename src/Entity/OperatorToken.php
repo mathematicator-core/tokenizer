@@ -8,10 +8,9 @@ namespace Mathematicator\Tokenizer\Token;
 class OperatorToken extends BaseToken
 {
 
-	/**
-	 * @var int
-	 */
+	/** @var int */
 	private $priority = 100;
+
 
 	/**
 	 * @return int
@@ -20,6 +19,7 @@ class OperatorToken extends BaseToken
 	{
 		return $this->priority;
 	}
+
 
 	/**
 	 * @param string $value
@@ -42,5 +42,4 @@ class OperatorToken extends BaseToken
 
 		return $this;
 	}
-
 }

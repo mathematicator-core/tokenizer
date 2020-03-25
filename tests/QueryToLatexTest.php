@@ -16,15 +16,12 @@ require __DIR__ . '/../../../autoload.php';
 class QueryToLatexTest extends TestCase
 {
 
-	/**
-	 * @var Tokenizer
-	 */
+	/** @var Tokenizer */
 	private $tokenizer;
 
-	/**
-	 * @var QueryNormalizer
-	 */
+	/** @var QueryNormalizer */
 	private $queryNormalizer;
+
 
 	/**
 	 * @param Tokenizer $tokenizer
@@ -35,6 +32,7 @@ class QueryToLatexTest extends TestCase
 		$this->tokenizer = $tokenizer;
 		$this->queryNormalizer = $queryNormalizer;
 	}
+
 
 	/**
 	 * @dataProvider getQueries
@@ -49,6 +47,7 @@ class QueryToLatexTest extends TestCase
 
 		Assert::same($latex, $this->tokenizer->tokensToLatex($objectTokens), $query . ' | ' . $normalizedQuery);
 	}
+
 
 	/**
 	 * @return string[][]
@@ -82,7 +81,6 @@ class QueryToLatexTest extends TestCase
 			['10.159564552121254685241866835861842684', '10.159564552121254685241866835861842684'],
 		];
 	}
-
 }
 
 if (isset($_SERVER['NETTE_TESTER_RUNNER'])) {

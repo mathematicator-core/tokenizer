@@ -11,15 +11,12 @@ use Mathematicator\Tokenizer\Token\IToken;
 class TokenIterator
 {
 
-	/**
-	 * @var IToken[]
-	 */
+	/** @var IToken[] */
 	private $tokens;
 
-	/**
-	 * @var int
-	 */
+	/** @var int */
 	private $iterator = 0;
+
 
 	/**
 	 * @param IToken[] $tokens
@@ -38,6 +35,7 @@ class TokenIterator
 		$this->tokens = $tokens;
 	}
 
+
 	/**
 	 * @return int
 	 */
@@ -45,6 +43,7 @@ class TokenIterator
 	{
 		return \count($this->tokens);
 	}
+
 
 	/**
 	 * @return IToken|null
@@ -54,6 +53,7 @@ class TokenIterator
 		return $this->tokens[$this->iterator] ?? null;
 	}
 
+
 	/**
 	 * @param IToken $token
 	 */
@@ -61,6 +61,7 @@ class TokenIterator
 	{
 		$this->tokens[$this->iterator] = $token;
 	}
+
 
 	/**
 	 * @return int
@@ -70,10 +71,12 @@ class TokenIterator
 		return $this->iterator;
 	}
 
+
 	public function next(int $times = 1): void
 	{
 		$this->iterator += $times;
 	}
+
 
 	/**
 	 * @param int $step
@@ -84,10 +87,12 @@ class TokenIterator
 		return $this->tokens[$this->iterator + $step] ?? null;
 	}
 
+
 	public function last(): void
 	{
 		$this->iterator--;
 	}
+
 
 	/**
 	 * @param int $step
@@ -98,6 +103,7 @@ class TokenIterator
 		return $this->tokens[$this->iterator - $step] ?? null;
 	}
 
+
 	/**
 	 * @return bool
 	 */
@@ -106,6 +112,7 @@ class TokenIterator
 		return !isset($this->tokens[$this->iterator]);
 	}
 
+
 	/**
 	 * @return IToken[]
 	 */
@@ -113,5 +120,4 @@ class TokenIterator
 	{
 		return $this->tokens;
 	}
-
 }

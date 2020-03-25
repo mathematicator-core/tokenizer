@@ -13,18 +13,14 @@ use Nette\Tokenizer\Token;
 
 class SubToken extends BaseToken
 {
-
 	use SmartObject;
 
-	/**
-	 * @var IToken[]
-	 */
+	/** @var IToken[] */
 	private $tokens = [];
 
-	/**
-	 * @var TokensToObject
-	 */
+	/** @var TokensToObject */
 	private $tokensToObject;
+
 
 	/**
 	 * @param TokensToObject $tokensToObject
@@ -33,6 +29,7 @@ class SubToken extends BaseToken
 	{
 		$this->tokensToObject = $tokensToObject;
 	}
+
 
 	/**
 	 * @param IToken[]|null $tokens
@@ -51,6 +48,7 @@ class SubToken extends BaseToken
 
 		$this->tokens = $tokens ?? [];
 	}
+
 
 	/**
 	 * Set token array and convert to object array.
@@ -90,6 +88,7 @@ class SubToken extends BaseToken
 		return $iterator;
 	}
 
+
 	/**
 	 * @return IToken[]
 	 */
@@ -97,5 +96,4 @@ class SubToken extends BaseToken
 	{
 		return $this->tokens;
 	}
-
 }

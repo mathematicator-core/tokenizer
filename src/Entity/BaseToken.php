@@ -14,23 +14,17 @@ use Nette\SmartObject;
  */
 class BaseToken implements IToken
 {
-
 	use SmartObject;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $token;
 
-	/**
-	 * @var int
-	 */
+	/** @var int */
 	private $position;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $type;
+
 
 	/**
 	 * @return string
@@ -39,6 +33,7 @@ class BaseToken implements IToken
 	{
 		return $this->token;
 	}
+
 
 	/**
 	 * @param string $token
@@ -51,6 +46,7 @@ class BaseToken implements IToken
 		return $this;
 	}
 
+
 	/**
 	 * @return int
 	 */
@@ -58,6 +54,7 @@ class BaseToken implements IToken
 	{
 		return $this->position ?? 0;
 	}
+
 
 	/**
 	 * @param int $position
@@ -70,6 +67,7 @@ class BaseToken implements IToken
 		return $this;
 	}
 
+
 	/**
 	 * @return string
 	 */
@@ -77,6 +75,7 @@ class BaseToken implements IToken
 	{
 		return $this->type;
 	}
+
 
 	/**
 	 * @param string $type
@@ -89,6 +88,7 @@ class BaseToken implements IToken
 		return $this;
 	}
 
+
 	/**
 	 * @return string
 	 */
@@ -96,5 +96,4 @@ class BaseToken implements IToken
 	{
 		return $this->getToken();
 	}
-
 }

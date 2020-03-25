@@ -14,31 +14,22 @@ use Nette\Tokenizer\Tokenizer as NetteTokenizer;
 class Tokenizer
 {
 
-	/**
-	 * @var NetteTokenizer
-	 */
+	/** @var NetteTokenizer */
 	private $tokenizer;
 
-	/**
-	 * @var TokensToLatex
-	 */
+	/** @var TokensToLatex */
 	private $tokenToLatexTranslator;
 
-	/**
-	 * @var TokensToObject
-	 */
+	/** @var TokensToObject */
 	private $tokensToObject;
+
 
 	/**
 	 * @param string[] $config
 	 * @param TokensToLatex $tokenToLatexTranslator
 	 * @param TokensToObject $tokensToObject
 	 */
-	public function __construct(
-		array $config,
-		TokensToLatex $tokenToLatexTranslator,
-		TokensToObject $tokensToObject
-	)
+	public function __construct(array $config, TokensToLatex $tokenToLatexTranslator, TokensToObject $tokensToObject)
 	{
 		$this->tokenToLatexTranslator = $tokenToLatexTranslator;
 		$this->tokensToObject = $tokensToObject;
@@ -63,6 +54,7 @@ class Tokenizer
 		]);
 	}
 
+
 	/**
 	 * @param string $query
 	 * @return Token[]
@@ -73,6 +65,7 @@ class Tokenizer
 		return $this->tokenizer->tokenize($query)->tokens;
 	}
 
+
 	/**
 	 * @param Token[] $tokens
 	 * @return IToken[]
@@ -81,6 +74,7 @@ class Tokenizer
 	{
 		return $this->tokensToObject->toObject($tokens);
 	}
+
 
 	/**
 	 * @param IToken[] $tokens
@@ -95,6 +89,7 @@ class Tokenizer
 		}
 	}
 
+
 	/**
 	 * Method return debug tree as HTML string.
 	 *
@@ -105,5 +100,4 @@ class Tokenizer
 	{
 		return '<pre>' . TokensTreeRenderer::render($tokens) . '</pre>';
 	}
-
 }

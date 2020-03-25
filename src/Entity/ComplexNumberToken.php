@@ -11,15 +11,12 @@ use Mathematicator\Numbers\SmartNumber;
 class ComplexNumberToken extends BaseToken
 {
 
-	/**
-	 * @var Number
-	 */
+	/** @var Number */
 	private $realNumber;
 
-	/**
-	 * @var Number
-	 */
+	/** @var Number */
 	private $complexNumber;
+
 
 	/**
 	 * @param SmartNumber $realNumber
@@ -31,6 +28,7 @@ class ComplexNumberToken extends BaseToken
 		$this->complexNumber = $complexNumber;
 	}
 
+
 	/**
 	 * @return SmartNumber
 	 */
@@ -38,6 +36,7 @@ class ComplexNumberToken extends BaseToken
 	{
 		return $this->realNumber;
 	}
+
 
 	/**
 	 * @param string $value
@@ -48,6 +47,7 @@ class ComplexNumberToken extends BaseToken
 		$this->realNumber->setValue($value);
 	}
 
+
 	/**
 	 * @return SmartNumber
 	 */
@@ -55,6 +55,7 @@ class ComplexNumberToken extends BaseToken
 	{
 		return $this->complexNumber;
 	}
+
 
 	/**
 	 * @param string $value
@@ -64,5 +65,4 @@ class ComplexNumberToken extends BaseToken
 	{
 		$this->complexNumber->setValue($value);
 	}
-
 }

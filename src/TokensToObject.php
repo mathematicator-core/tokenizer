@@ -24,15 +24,12 @@ use Nette\Tokenizer\Token;
 class TokensToObject
 {
 
-	/**
-	 * @var NumberFactory
-	 */
+	/** @var NumberFactory */
 	private $numberFactory;
 
-	/**
-	 * @var NumberHelper
-	 */
+	/** @var NumberHelper */
 	private $numberHelper;
+
 
 	/**
 	 * @param NumberFactory $numberFactory
@@ -43,6 +40,7 @@ class TokensToObject
 		$this->numberFactory = $numberFactory;
 		$this->numberHelper = $numberHelper;
 	}
+
 
 	/**
 	 * @param Token[] $tokens
@@ -125,5 +123,4 @@ class TokensToObject
 
 		return $objects;
 	}
-
 }

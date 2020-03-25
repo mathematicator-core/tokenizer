@@ -11,20 +11,18 @@ use Mathematicator\Numbers\SmartNumber;
 class MatrixToken extends BaseToken
 {
 
-	/**
-	 * @var Number[][]
-	 */
+	/** @var Number[][] */
 	private $matrix;
 
+
 	/**
-	 * MatrixToken constructor.
-	 *
 	 * @param Number[][] $matrix
 	 */
 	public function __construct(array $matrix)
 	{
 		$this->matrix = $this->validator($matrix);
 	}
+
 
 	/**
 	 * @return Number[][]
@@ -34,6 +32,7 @@ class MatrixToken extends BaseToken
 		return $this->matrix;
 	}
 
+
 	/**
 	 * @param Number[][] $matrix
 	 */
@@ -41,6 +40,7 @@ class MatrixToken extends BaseToken
 	{
 		$this->matrix = $this->validator($matrix);
 	}
+
 
 	/**
 	 * @param Number[][] $matrix
@@ -69,5 +69,4 @@ class MatrixToken extends BaseToken
 
 		return $matrix;
 	}
-
 }

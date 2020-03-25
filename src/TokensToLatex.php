@@ -19,9 +19,7 @@ use Nette\Utils\Strings;
 class TokensToLatex
 {
 
-	/**
-	 * @var string[]
-	 */
+	/** @var string[] */
 	private static $charTable = [
 		'sin' => '\\sin',
 		'cos' => '\\cos',
@@ -43,22 +41,17 @@ class TokensToLatex
 		'<' => '\ \lt\ ',
 	];
 
-	/**
-	 * @var string[]
-	 */
+	/** @var string[] */
 	private $beforeReplaceTable;
 
-	/**
-	 * @var string[]
-	 */
+	/** @var string[] */
 	private $afterReplaceTable;
 
-	/**
-	 * @var string[]
-	 */
+	/** @var string[] */
 	private $noBracketFunctions = [
 		'sqrt',
 	];
+
 
 	/**
 	 * @param string[] $functions
@@ -80,6 +73,7 @@ class TokensToLatex
 		];
 	}
 
+
 	/**
 	 * @param IToken[] $tokens
 	 * @return string
@@ -89,6 +83,7 @@ class TokensToLatex
 	{
 		return $this->iterator($tokens);
 	}
+
 
 	/**
 	 * @param IToken[] $tokens
@@ -162,6 +157,7 @@ class TokensToLatex
 		);
 	}
 
+
 	/**
 	 * @param string $token
 	 * @return string
@@ -170,6 +166,7 @@ class TokensToLatex
 	{
 		return self::$charTable[$token] ?? $token;
 	}
+
 
 	/**
 	 * @param int $level
@@ -180,6 +177,7 @@ class TokensToLatex
 		return ['\\left(', '\\left[', '\\left\\{'][$level % 3];
 	}
 
+
 	/**
 	 * @param int $level
 	 * @return string
@@ -188,6 +186,7 @@ class TokensToLatex
 	{
 		return ['\\right)', '\\right]', '\\right\\}'][$level % 3];
 	}
+
 
 	/**
 	 * @param TokenIterator $iterator
@@ -215,6 +214,7 @@ class TokensToLatex
 
 		return '\frac{' . $lastTokenRender . '}{' . $nextTokenRender . '}';
 	}
+
 
 	/**
 	 * @param TokenIterator $iterator
@@ -247,6 +247,7 @@ class TokensToLatex
 		return '{' . $downTokenRender . '}^{' . $topTokenRender . '}';
 	}
 
+
 	/**
 	 * Fix generated haystack by smart regular patterns.
 	 *
@@ -262,5 +263,4 @@ class TokensToLatex
 
 		return $haystack;
 	}
-
 }

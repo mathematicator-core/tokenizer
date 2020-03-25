@@ -11,10 +11,9 @@ use Mathematicator\Tokenizer\Tokens;
 class VariableToken extends BaseToken
 {
 
-	/**
-	 * @var SmartNumber
-	 */
+	/** @var SmartNumber */
 	private $times;
+
 
 	/**
 	 * @param string $token
@@ -27,6 +26,7 @@ class VariableToken extends BaseToken
 		$this->setType(Tokens::M_VARIABLE);
 	}
 
+
 	/**
 	 * @return SmartNumber
 	 */
@@ -34,5 +34,4 @@ class VariableToken extends BaseToken
 	{
 		return $this->times;
 	}
-
 }

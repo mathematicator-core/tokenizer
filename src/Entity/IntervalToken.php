@@ -7,29 +7,22 @@ namespace Mathematicator\Tokenizer\Token;
 
 class IntervalToken extends BaseToken
 {
-
 	public const TYPE_OPEN = 'open';
+
 	public const TYPE_CLOSED = 'closed';
 
-	/**
-	 * @var IToken
-	 */
+	/** @var IToken */
 	private $from;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $fromType;
 
-	/**
-	 * @var IToken
-	 */
+	/** @var IToken */
 	private $to;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $toType;
+
 
 	/**
 	 * @param IToken $from
@@ -37,18 +30,14 @@ class IntervalToken extends BaseToken
 	 * @param string $fromType
 	 * @param string $toType
 	 */
-	public function __construct(
-		IToken $from,
-		IToken $to,
-		string $fromType = self::TYPE_OPEN,
-		string $toType = self::TYPE_OPEN
-	)
+	public function __construct(IToken $from, IToken $to, string $fromType = self::TYPE_OPEN, string $toType = self::TYPE_OPEN)
 	{
 		$this->from = $from;
 		$this->to = $to;
 		$this->fromType = $fromType;
 		$this->toType = $toType;
 	}
+
 
 	/**
 	 * @return IToken
@@ -58,6 +47,7 @@ class IntervalToken extends BaseToken
 		return $this->from;
 	}
 
+
 	/**
 	 * @return IToken
 	 */
@@ -65,6 +55,7 @@ class IntervalToken extends BaseToken
 	{
 		return $this->to;
 	}
+
 
 	/**
 	 * @return string
@@ -74,6 +65,7 @@ class IntervalToken extends BaseToken
 		return $this->fromType;
 	}
 
+
 	/**
 	 * @return string
 	 */
@@ -81,5 +73,4 @@ class IntervalToken extends BaseToken
 	{
 		return $this->toType;
 	}
-
 }

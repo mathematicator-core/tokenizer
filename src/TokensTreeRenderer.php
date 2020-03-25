@@ -8,16 +8,17 @@ namespace Mathematicator\Tokenizer;
 use Mathematicator\Tokenizer\Token\IToken;
 use Mathematicator\Tokenizer\Token\SubToken;
 
-class TokensTreeRenderer
+final class TokensTreeRenderer
 {
 
 	/**
 	 * @throws \Error
 	 */
-	final public function __construct()
+	public function __construct()
 	{
 		throw new \Error('Class ' . get_class($this) . ' is static and cannot be instantiated.');
 	}
+
 
 	/**
 	 * Render simple tree view to HTML.
@@ -49,5 +50,4 @@ class TokensTreeRenderer
 
 		return $return;
 	}
-
 }

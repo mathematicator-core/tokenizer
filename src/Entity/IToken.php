@@ -7,7 +7,6 @@ namespace Mathematicator\Tokenizer\Token;
 
 interface IToken
 {
-
 	/**
 	 * @return string
 	 */
@@ -40,5 +39,4 @@ interface IToken
 	 * @return IToken
 	 */
 	public function setType(string $type): IToken;
-
 }

@@ -10,15 +10,15 @@ use Mathematicator\Numbers\SmartNumber;
 class NumberToken extends BaseToken
 {
 
-	/**
-	 * @var SmartNumber
-	 */
+	/** @var SmartNumber */
 	private $number;
+
 
 	public function __construct(SmartNumber $number)
 	{
 		$this->number = $number;
 	}
+
 
 	/**
 	 * @return SmartNumber
@@ -27,5 +27,4 @@ class NumberToken extends BaseToken
 	{
 		return $this->number;
 	}
-
 }
