@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
-use Mathematicator\NumberHelper;
 use Mathematicator\Numbers\NumberFactory;
 use Mathematicator\Tokenizer\Token\BaseToken;
 use Mathematicator\Tokenizer\Token\ComparatorToken;
@@ -27,18 +26,13 @@ class TokensToObject
 	/** @var NumberFactory */
 	private $numberFactory;
 
-	/** @var NumberHelper */
-	private $numberHelper;
-
 
 	/**
 	 * @param NumberFactory $numberFactory
-	 * @param NumberHelper $numberHelper
 	 */
-	public function __construct(NumberFactory $numberFactory, NumberHelper $numberHelper)
+	public function __construct(NumberFactory $numberFactory)
 	{
 		$this->numberFactory = $numberFactory;
-		$this->numberHelper = $numberHelper;
 	}
 
 
@@ -61,7 +55,7 @@ class TokensToObject
 				case Tokens::M_ROMAN_NUMBER:
 					$tokenFactory = new RomanNumberToken(
 						$this->numberFactory->create(
-							(string) NumberHelper::romanToInt($token->value)
+							(string) Helper::romanToInt($token->value)
 						)
 					);
 					break;
