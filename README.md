@@ -1,6 +1,8 @@
 Robust PHP math Tokenizer
 =========================
 
+![Integrity check](https://github.com/mathematicator-core/tokenizer/workflows/Integrity%20check/badge.svg)
+
 Tokenizer is a simple library used to convert math formulas to arrays of tokens.
 
 > Please help to improve this documentation by sending a Pull request.
