@@ -97,12 +97,12 @@ class TokensToObject
 					break;
 
 				case Tokens::M_LEFT_BRACKET:
-					$tokenFactory = new SubToken(new TokensToObject($this->numberFactory, $this->numberHelper));
+					$tokenFactory = new SubToken($this);
 					$iterator = $tokenFactory->setArrayTokens($tokens, $iterator);
 					break;
 
 				case Tokens::M_FUNCTION:
-					$tokenFactory = new FunctionToken(new TokensToObject($this->numberFactory, $this->numberHelper));
+					$tokenFactory = new FunctionToken($this);
 					$iterator = $tokenFactory->setArrayTokens($tokens, $iterator);
 					$tokenFactory->setName($token->value);
 					break;

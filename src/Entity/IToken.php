@@ -16,7 +16,7 @@ interface IToken
 	 * @param string $token
 	 * @return IToken
 	 */
-	public function setToken(string $token): IToken;
+	public function setToken(string $token): self;
 
 	/**
 	 * @return int
@@ -27,7 +27,7 @@ interface IToken
 	 * @param int $position
 	 * @return IToken
 	 */
-	public function setPosition(int $position): IToken;
+	public function setPosition(int $position): self;
 
 	/**
 	 * @return string
@@ -38,5 +38,5 @@ interface IToken
 	 * @param string $type
 	 * @return IToken
 	 */
-	public function setType(string $type): IToken;
+	public function setType(string $type): self;
 }

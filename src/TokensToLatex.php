@@ -105,11 +105,11 @@ class TokensToLatex
 				if ($token instanceof FunctionToken) {
 					$latex .= $this->latexTranslateTable($token->getName());
 					$latex .= '{';
-					if (!\in_array($token->getName(), $this->noBracketFunctions)) {
+					if (\in_array($token->getName(), $this->noBracketFunctions, true) === false) {
 						$latex .= $this->getLeftBracket($level);
 					}
 					$latex .= $this->iterator($token->getTokens(), $level + 1);
-					if (!\in_array($token->getName(), $this->noBracketFunctions)) {
+					if (\in_array($token->getName(), $this->noBracketFunctions, true) === false) {
 						$latex .= $this->getRightBracket($level);
 					}
 					$latex .= '}';
