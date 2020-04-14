@@ -5,7 +5,7 @@
 	"authors": [
 		{
 			"name": "Jan Barášek",
-			"homepage": "http://baraja.cz"
+			"homepage": "https://baraja.cz"
 		}
 	],
 	"require": {
@@ -15,7 +15,7 @@
 		"nette/di": "^3.0",
 		"nette/tester": "^2.0",
 		"mathematicator-core/engine": "~1.0",
-		"mathematicator-core/numbers": "~1.0"
+		"mathematicator-core/numbers": "^2.0"
 	},
 	"require-dev": {
 		"phpstan/phpstan": "^0.12.18",
