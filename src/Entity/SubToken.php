@@ -32,7 +32,7 @@ class SubToken extends BaseToken
 
 
 	/**
-	 * @param IToken[]|null $tokens
+	 * @param IToken[]|mixed[]|null $tokens
 	 * @throws MathematicatorException
 	 */
 	public function setObjectTokens(?array $tokens): void
@@ -40,8 +40,8 @@ class SubToken extends BaseToken
 		foreach ($tokens ?? [] as $token) {
 			if (!$token instanceof IToken && $token !== null) {
 				throw new MathematicatorException(
-					'All tokens must be instance of "' . IToken::class . '". '
-					. json_encode($token) . ' given.'
+					'Token must be instance of "' . IToken::class . '", but type "'
+					. (is_object($token) ? get_class($token) : json_encode($token)) . '" given.'
 				);
 			}
 		}

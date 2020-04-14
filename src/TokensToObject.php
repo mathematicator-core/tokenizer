@@ -69,7 +69,7 @@ class TokensToObject
 				case Tokens::M_VARIABLE:
 					$tokenFactory = new VariableToken(
 						$token->value,
-						$this->numberFactory->create(1)
+						$this->numberFactory->create('1')
 					);
 					break;
 

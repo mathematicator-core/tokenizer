@@ -28,7 +28,7 @@ class PolynomialToken extends BaseToken
 
 	/**
 	 * @param NumberToken $times
-	 * @param NumberToken|int $power
+	 * @param NumberToken|null $power (in integer format)
 	 * @param VariableToken $variable
 	 * @throws NumberException|MathematicatorException
 	 */

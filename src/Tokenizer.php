@@ -25,7 +25,7 @@ class Tokenizer
 
 
 	/**
-	 * @param string[] $config
+	 * @param mixed[] $config
 	 * @param TokensToLatex $tokenToLatexTranslator
 	 * @param TokensToObject $tokensToObject
 	 */
@@ -44,7 +44,7 @@ class Tokenizer
 			Tokens::M_ROMAN_NUMBER => '[IVXLCDM]+',
 			Tokens::M_VARIABLE => '[a-z]',
 			Tokens::M_WHITESPACE => '\s+',
-			Tokens::M_FUNCTION => implode('|', explode('|', implode('\(|', $config['functions']) . '\(')),
+			Tokens::M_FUNCTION => implode('|', explode('|', implode('\(|', (array) $config['functions']) . '\(')),
 			Tokens::M_STRING => '\w+',
 			Tokens::M_OPERATOR => '[\+\-\*\/\^\!]',
 			Tokens::M_LEFT_BRACKET => '\(',
