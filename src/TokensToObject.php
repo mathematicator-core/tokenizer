@@ -6,12 +6,12 @@ namespace Mathematicator\Tokenizer;
 
 
 use Mathematicator\Numbers\NumberFactory;
-use Mathematicator\Tokenizer\Token\BaseToken;
 use Mathematicator\Tokenizer\Token\ComparatorToken;
 use Mathematicator\Tokenizer\Token\EquationToken;
 use Mathematicator\Tokenizer\Token\FactorialToken;
 use Mathematicator\Tokenizer\Token\FunctionToken;
 use Mathematicator\Tokenizer\Token\InfinityToken;
+use Mathematicator\Tokenizer\Token\IToken;
 use Mathematicator\Tokenizer\Token\NumberToken;
 use Mathematicator\Tokenizer\Token\OperatorToken;
 use Mathematicator\Tokenizer\Token\OtherToken;
@@ -38,7 +38,7 @@ class TokensToObject
 
 	/**
 	 * @param Token[] $tokens
-	 * @return BaseToken[]
+	 * @return IToken[]
 	 */
 	public function toObject(array $tokens): array
 	{
