@@ -108,12 +108,12 @@ class TokensToObject
 					break;
 
 				// TODO: Fix in future
-				//case Tokens::M_PI:
-				//	$tokenFactory = new PiToken($this->numberFactory->create(M_PI), $this->numberHelper);
-				//	break;
+				// case Tokens::M_PI:
+				// $tokenFactory = new PiToken($this->numberFactory->create(M_PI), $this->numberHelper);
+				// break;
 
 				default:
-					$tokenFactory = new OtherToken();
+					$tokenFactory = new OtherToken;
 			}
 
 			$objects[] = $tokenFactory->setToken($token->value)
