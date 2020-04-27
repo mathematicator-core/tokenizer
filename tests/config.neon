@@ -1,0 +1,14 @@
+parameters:
+	math:
+		functions:
+			- sin
+			- cos
+			- tan
+			- cotan
+			- log
+			- log\d*
+			- ln
+			- sqrt
+
+services:
+	- Mathematicator\Numbers\NumberFactory
