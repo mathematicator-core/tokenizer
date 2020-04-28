@@ -74,8 +74,14 @@ class QueryToLatexTest extends TestCase
 			['{5.678}^{9.101}', '5.678*e9.101'],
 			['{24}^{1.234}', '24*e1.234'],
 			['{\left(1-\frac{1}{6}\right)}^{k}\cdot \frac{1}{6}', '(1-1/6)^k*1/6'],
-			// ['\frac{k}{2}','k/2'], // TODO: returns: k\frac{k}{2}
-			// ['\frac{{x}^\pi}{2}', 'x^PI/2'], // TODO: returns: {x}^{\pi}\frac{\pi}{2}
+			['\frac{k}{2}', 'k/2'],
+			['\frac{5}{2}', '5/2'],
+			['{x}^{\pi}', 'x^PI'],
+			['\frac{\frac{1+3+x}{4}}{2}', '((1+3+x)/4)/2'],
+//			['{5}^{2}^{3}','5^2^3'],
+//			['\frac{{5}^{\pi}}{2}', '5^PI/2'], // TODO
+//			['\frac{{5}^{\pi}}{2}', '5^PI/2'], // TODO
+//			['\frac{{x}^{\pi}}{2}', 'x^PI/2'], // TODO: returns: {x}^{\pi}\frac{\pi}{2}
 		];
 	}
 }
