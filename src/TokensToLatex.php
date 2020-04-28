@@ -137,12 +137,14 @@ class TokensToLatex
 						: '{' . $token->getVariable()->getToken() . '}'
 						. '^{' . $token->getPower()->getNumber()->getString() . '}'
 					);
-			} elseif ($token instanceof VariableToken) { // Variable "x"
-				$latex .= ($token->getTimes()->isInteger() === false || $token->getTimes()->getInteger() !== '1'
-						? $token->getTimes()->getString()
-						: ''
-					) . $tk;
-			} elseif ($token !== null) { // Other tokens
+			} elseif ($token instanceof VariableToken) { // Variable (e.g. x)
+				if ($next === null || ($nextTk !== '/' && $nextTk !== '^')) {
+					$latex .= ($token->getTimes()->isInteger() === false || $token->getTimes()->getInteger() !== '1'
+							? $token->getTimes()->getString()
+							: ''
+						) . $tk;
+				}
+			} elseif ($token !== null) { // Other tokens (e.g. NumberToken)
 				if ($next === null || ($nextTk !== '/' && $nextTk !== '^')) {
 					$latex .= $this->latexTranslateTable($tk);
 				}
