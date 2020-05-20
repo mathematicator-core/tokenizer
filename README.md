@@ -1,7 +1,9 @@
 Robust PHP math Tokenizer
 =========================
 
-![Integrity check](https://github.com/mathematicator-core/tokenizer/workflows/Integrity%20check/badge.svg)
+[![Integrity check](https://github.com/mathematicator-core/tokenizer/workflows/Integrity%20check/badge.svg)](https://github.com/mathematicator-core/tokenizer/actions?query=workflow%3A%22Integrity+check%22)
+[![codecov](https://codecov.io/gh/mathematicator-core/tokenizer/branch/master/graph/badge.svg)](https://codecov.io/gh/mathematicator-core/tokenizer)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](./LICENSE)
 
 Tokenizer is a simple library used to convert math formulas to arrays of tokens.
 
@@ -66,3 +68,17 @@ parameters:
             - ln
             - sqrt
 ```
+
+Contribution
+----
+
+### Tests
+
+All new contributions should have its unit tests in `/tests` directory.
+
+Before you send a PR, please, check that all tests pass.
+
+This package uses [Nette Tester](https://tester.nette.org/). You can run tests via command:
+```bash
+vendor/bin/tester -c tests/php.ini tests
+````
