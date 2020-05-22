@@ -6,6 +6,7 @@ namespace Mathematicator\Tokenizer;
 
 
 use Mathematicator\Engine\MathematicatorException;
+use Mathematicator\Engine\MathFunction\FunctionManager;
 use Mathematicator\Tokenizer\Token\ComparatorToken;
 use Mathematicator\Tokenizer\Token\FunctionToken;
 use Mathematicator\Tokenizer\Token\IToken;
@@ -53,10 +54,7 @@ class TokensToLatex
 	];
 
 
-	/**
-	 * @param string[] $functions
-	 */
-	public function __construct(array $functions)
+	public function __construct()
 	{
 		$this->beforeReplaceTable = [
 			'INF' => '\\infty',
@@ -68,7 +66,7 @@ class TokensToLatex
 			'\*' => '\cdot ',
 			'(\d)\\\cdot\s*([a-z])' => '$1$2',
 			'abs\\\left[\(\[\{](.+?)\\\right[\)\]\}]' => '\mid $1 \mid',
-			'\\\(' . implode('|', $functions) . ')\{\\\left\(([^\(\)]+?)\\\right\)\}' => '\\\$1{$2}',
+			'\\\(' . implode('|', FunctionManager::getFunctionNames()) . ')\{\\\left\(([^\(\)]+?)\\\right\)\}' => '\\\$1{$2}',
 			'([+-]?[0-9]*[.]?[0-9]+)[eE]([+-]?[0-9]*[.]?[0-9]+)' => '{$1}^{$2}',
 		];
 	}

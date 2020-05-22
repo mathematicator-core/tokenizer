@@ -6,6 +6,7 @@ namespace Mathematicator\Tokenizer;
 
 
 use Mathematicator\Engine\MathematicatorException;
+use Mathematicator\Engine\MathFunction\FunctionManager;
 use Mathematicator\Tokenizer\Token\IToken;
 use Nette\Tokenizer\Exception;
 use Nette\Tokenizer\Token;
@@ -25,11 +26,10 @@ class Tokenizer
 
 
 	/**
-	 * @param mixed[] $config
 	 * @param TokensToLatex $tokenToLatexTranslator
 	 * @param TokensToObject $tokensToObject
 	 */
-	public function __construct(array $config, TokensToLatex $tokenToLatexTranslator, TokensToObject $tokensToObject)
+	public function __construct(TokensToLatex $tokenToLatexTranslator, TokensToObject $tokensToObject)
 	{
 		$this->tokenToLatexTranslator = $tokenToLatexTranslator;
 		$this->tokensToObject = $tokensToObject;
@@ -44,7 +44,7 @@ class Tokenizer
 			Tokens::M_ROMAN_NUMBER => '[IVXLCDM]+',
 			Tokens::M_VARIABLE => '[a-z]',
 			Tokens::M_WHITESPACE => '\s+',
-			Tokens::M_FUNCTION => implode('|', explode('|', implode('\(|', (array) $config['functions']) . '\(')),
+			Tokens::M_FUNCTION => implode('|', explode('|', implode('\(|', FunctionManager::getFunctionNames()) . '\(')),
 			Tokens::M_STRING => '\w+',
 			Tokens::M_OPERATOR => '[\+\-\*\/\^\!]',
 			Tokens::M_LEFT_BRACKET => '\(',
