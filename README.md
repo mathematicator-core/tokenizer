@@ -51,26 +51,7 @@ echo $tokenizer->renderTokensTree($objectTokens);
 Configuration
 -------------
 
-Tokenizer needs your math configuration.
-
-In `common.neon` simply define the parameters:
-
-```yaml
-parameters:
-    math:
-        functions:
-            - sin
-            - cos
-            - tan
-            - cotan
-            - log
-            - log\d*
-            - ln
-            - sqrt
-```
-
-Contribution
-----
+The tokenizer uses automatic configuration based on DIC. Just use the DIC container and the service will be fully available.
 
 ### Tests
 
@@ -79,6 +60,7 @@ All new contributions should have its unit tests in `/tests` directory.
 Before you send a PR, please, check that all tests pass.
 
 This package uses [Nette Tester](https://tester.nette.org/). You can run tests via command:
+
 ```bash
 vendor/bin/tester -c tests/php.ini tests
 ````
