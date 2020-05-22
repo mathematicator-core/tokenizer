@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Test;
 
 
-use App\Booting;
 use Mathematicator\Engine\Tests\Bootstrap;
-use Mathematicator\Engine\Tests\NumberRewriterTest;
-use Mathematicator\NumberRewriter;
 use Mathematicator\Tokenizer\Tokenizer;
 use Nette\DI\Container;
 use Tester\Assert;
@@ -22,9 +19,8 @@ class QueryToLatexTest extends TestCase
 	/** @var Tokenizer */
 	private $tokenizer;
 
-	public function __construct(
-		Container $container
-	)
+
+	public function __construct(Container $container)
 	{
 		$this->tokenizer = $container->getByType(Tokenizer::class);
 	}
@@ -86,5 +82,4 @@ class QueryToLatexTest extends TestCase
 	}
 }
 
-$container = Bootstrap::boot();
-(new QueryToLatexTest($container))->run();
+(new QueryToLatexTest(Bootstrap::boot()))->run();
