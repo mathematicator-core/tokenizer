@@ -1,5 +1,12 @@
-Robust PHP math Tokenizer
-=========================
+<h1 align="center">
+    Robust PHP math Tokenizer
+</h1>
+
+<p align="center">
+    <a href="https://mathematicator.com" target="_blank">
+        <img src="https://avatars3.githubusercontent.com/u/44620375?s=100&v=4">
+    </a>
+</p>
 
 [![Integrity check](https://github.com/mathematicator-core/tokenizer/workflows/Integrity%20check/badge.svg)](https://github.com/mathematicator-core/tokenizer/actions?query=workflow%3A%22Integrity+check%22)
 [![codecov](https://codecov.io/gh/mathematicator-core/tokenizer/branch/master/graph/badge.svg)](https://codecov.io/gh/mathematicator-core/tokenizer)
