@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Test;
 
 
-use Mathematicator\Engine\Tests\Bootstrap;
+use Mathematicator\Tokenizer\Tests\Bootstrap;
 use Mathematicator\Tokenizer\Tokenizer;
 use Nette\DI\Container;
 use Tester\Assert;

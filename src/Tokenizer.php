@@ -6,7 +6,7 @@ namespace Mathematicator\Tokenizer;
 
 
 use Mathematicator\Engine\MathematicatorException;
-use Mathematicator\Engine\MathFunction\FunctionManager;
+use Mathematicator\MathFunction\FunctionManager;
 use Mathematicator\Tokenizer\Token\IToken;
 use Nette\Tokenizer\Exception;
 use Nette\Tokenizer\Token;
