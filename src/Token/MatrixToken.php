@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Token;
 
 
-use Mathematicator\Engine\MathErrorException;
+use function count;
 use Mathematicator\Numbers\SmartNumber;
+use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 
 class MatrixToken extends BaseToken
 {
@@ -17,7 +18,7 @@ class MatrixToken extends BaseToken
 
 	/**
 	 * @param SmartNumber[][] $matrix
-	 * @throws MathErrorException
+	 * @throws TokenizerException
 	 */
 	public function __construct(array $matrix)
 	{
@@ -36,7 +37,7 @@ class MatrixToken extends BaseToken
 
 	/**
 	 * @param SmartNumber[][] $matrix
-	 * @throws MathErrorException
+	 * @throws TokenizerException
 	 */
 	public function setMatrix(array $matrix): void
 	{
@@ -47,24 +48,24 @@ class MatrixToken extends BaseToken
 	/**
 	 * @param SmartNumber[][] $matrix
 	 * @return SmartNumber[][]
-	 * @throws MathErrorException
+	 * @throws TokenizerException
 	 */
 	private function validator(array $matrix): array
 	{
 		$lastCols = null;
 
 		foreach ($matrix as $row) {
-			$cols = \count($row);
+			$cols = count($row);
 
 			if ($lastCols === null) {
 				$lastCols = $cols;
 			} elseif ($cols !== $lastCols) {
-				throw new MathErrorException('Matrix structure is invalid: Array can not contain empty space.');
+				throw new TokenizerException('Matrix structure is invalid: Array can not contain empty space.');
 			}
 
 			foreach ($row as $col) {
 				if (!$col instanceof SmartNumber) {
-					throw new MathErrorException('All matrix items must be a number.');
+					throw new TokenizerException('All matrix items must be a number.');
 				}
 			}
 		}

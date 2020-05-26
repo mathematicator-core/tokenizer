@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
+use Error;
 use Nette\Utils\Strings;
+use function strlen;
 
 final class Helper
 {
-	/** @throws \Error */
+	/** @throws Error */
 	final public function __construct()
 	{
-		throw new \Error('Class ' . get_class($this) . ' is static and cannot be instantiated.');
+		throw new Error('Class ' . get_class($this) . ' is static and cannot be instantiated.');
 	}
 
 
@@ -28,7 +30,7 @@ final class Helper
 		$return = 0;
 		for ($i = 0; $i < $romanLength; $i++) {
 			$x = $romanNumber[$roman[$i]];
-			if ($i + 1 < \strlen($roman) && ($nextToken = $romanNumber[$roman[$i + 1]]) > $x) {
+			if ($i + 1 < strlen($roman) && ($nextToken = $romanNumber[$roman[$i + 1]]) > $x) {
 				$return += $nextToken - $x;
 				$i++;
 			} else {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
+use Mathematicator\Numbers\NumberException;
 use Mathematicator\Numbers\NumberFactory;
 use Mathematicator\Tokenizer\Token\ComparatorToken;
 use Mathematicator\Tokenizer\Token\EquationToken;
@@ -39,13 +40,13 @@ class TokensToObject
 	/**
 	 * @param Token[] $tokens
 	 * @return IToken[]
+	 * @throws NumberException
 	 */
 	public function toObject(array $tokens): array
 	{
 		$objects = [];
 
 		for ($iterator = 0; isset($tokens[$iterator]); $iterator++) {
-			/** @var Token $token */
 			$token = $tokens[$iterator];
 			switch ($token->type) {
 				case Tokens::M_NUMBER:
@@ -112,7 +113,7 @@ class TokensToObject
 
 			$objects[] = $tokenFactory->setToken($token->value)
 				->setPosition($token->offset)
-				->setType($token->type);
+				->setType((string) $token->type);
 		}
 
 		return $objects;

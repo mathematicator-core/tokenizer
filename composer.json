@@ -33,14 +33,14 @@
 		"nette/di": "(^3.0) To use package in Nette Framework"
 	},
 	"autoload": {
-		"classmap": [
-			"src/"
-		]
+		"psr-4": {
+			"Mathematicator\\Tokenizer\\": "src/"
+		}
 	},
 	"autoload-dev": {
-		"classmap": [
-			"tests/"
-		]
+		"psr-4": {
+			"Mathematicator\\Tokenizer\\Tests\\": "tests/TokenizerTests/"
+		}
 	},
 	"scripts": {
 		"post-install-cmd": "cghooks add --ignore-lock",
@@ -67,8 +67,7 @@
 		"test": "vendor/bin/tester -s -c tests/php.ini -p php tests --coverage coverage.xml --coverage-src src",
 		"cghooks": "vendor/bin/cghooks"
 	},
-	"minimum-stability": "dev",
-	"prefer-stable": true,
+	"minimum-stability": "stable",
 	"config": {
 		"sort-packages": true
 	},
