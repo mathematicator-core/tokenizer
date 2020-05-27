@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
-use Mathematicator\Engine\MathematicatorException;
 use Mathematicator\Engine\MathFunction\FunctionManager;
+use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Token\IToken;
 use Nette\Tokenizer\Exception;
 use Nette\Tokenizer\Token;
@@ -44,7 +44,7 @@ class Tokenizer
 			Tokens::M_ROMAN_NUMBER => '[IVXLCDM]+',
 			Tokens::M_VARIABLE => '[a-z]',
 			Tokens::M_WHITESPACE => '\s+',
-			Tokens::M_FUNCTION => implode('|', explode('|', implode('\(|', FunctionManager::getFunctionNames()) . '\(')),
+			Tokens::M_FUNCTION => implode('|', explode('|', implode('\(|', self::getFunctionNames()) . '\(')),
 			Tokens::M_STRING => '\w+',
 			Tokens::M_OPERATOR => '[\+\-\*\/\^\!]',
 			Tokens::M_LEFT_BRACKET => '\(',
@@ -52,6 +52,20 @@ class Tokenizer
 			Tokens::M_SEPARATOR => '[\,\;]+',
 			Tokens::M_OTHER => '.+',
 		]);
+	}
+
+
+	/**
+	 * @TODO Remove dependency on engine package (FunctionManager)
+	 * @return string[]
+	 */
+	public static function getFunctionNames(): array
+	{
+		if (class_exists(FunctionManager::class)) {
+			return FunctionManager::getFunctionNames();
+		} else {
+			return [];
+		}
 	}
 
 
@@ -84,7 +98,7 @@ class Tokenizer
 	{
 		try {
 			return $this->tokenToLatexTranslator->process($tokens);
-		} catch (MathematicatorException $e) {
+		} catch (TokenizerException $e) {
 			return '';
 		}
 	}

@@ -20,8 +20,7 @@ jobs:
 
       - name: Install composer dependencies
         run: |
-          composer create-project nette/code-checker temp/code-checker ^3 --no-progress
-          composer create-project nette/coding-standard temp/coding-standard ^2 --no-progress
+          composer run cs:install
 
           # Install app dependencies
           composer install --no-interaction --prefer-dist
@@ -29,8 +28,7 @@ jobs:
       # Check code checker and coding standards
       - name: Check coding standards
         run: |
-          php temp/code-checker/code-checker --short-arrays --strict-types --fix --no-progress
-          php temp/coding-standard/ecs check src --config temp/coding-standard/coding-standard-php71.yml
+          composer run cs:check
 
       - name: Check PHPStan rules
         run: vendor/bin/phpstan analyse src -c phpstan.neon --level 8 --no-progress
@@ -57,7 +55,7 @@ jobs:
           composer install --no-interaction --prefer-dist
 
       - name: Run tests
-        run: vendor/bin/tester -s -c tests/php.ini -p php tests --coverage coverage.xml --coverage-src src
+        run: composer run test
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1

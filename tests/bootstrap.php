@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Mathematicator\Tokenizer\Tests;
 
-// TODO: require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 
 use Nette\Configurator;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Token;
 
 
-use Mathematicator\Engine\MathematicatorException;
+use Mathematicator\Numbers\NumberException;
 use Mathematicator\Numbers\SmartNumber;
 
 class ComplexNumberToken extends BaseToken
@@ -40,7 +40,7 @@ class ComplexNumberToken extends BaseToken
 
 	/**
 	 * @param string $value
-	 * @throws MathematicatorException
+	 * @throws NumberException
 	 */
 	public function setRealNumber(string $value): void
 	{
@@ -59,7 +59,7 @@ class ComplexNumberToken extends BaseToken
 
 	/**
 	 * @param string $value
-	 * @throws MathematicatorException
+	 * @throws NumberException
 	 */
 	public function setComplexNumber(string $value): void
 	{

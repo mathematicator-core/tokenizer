@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Token;
 
 
-use Mathematicator\Engine\MathematicatorException;
+use Mathematicator\Numbers\NumberException;
+use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Tokens;
 use Mathematicator\Tokenizer\TokensToObject;
 use Nette\SmartObject;
@@ -33,13 +34,13 @@ class SubToken extends BaseToken
 
 	/**
 	 * @param IToken[]|mixed[]|null $tokens
-	 * @throws MathematicatorException
+	 * @throws TokenizerException
 	 */
 	public function setObjectTokens(?array $tokens): void
 	{
 		foreach ($tokens ?? [] as $token) {
 			if (!$token instanceof IToken && $token !== null) {
-				throw new MathematicatorException(
+				throw new TokenizerException(
 					'Token must be instance of "' . IToken::class . '", but type "'
 					. (is_object($token) ? get_class($token) : json_encode($token)) . '" given.'
 				);
@@ -56,6 +57,7 @@ class SubToken extends BaseToken
 	 * @param Token[] $tokens
 	 * @param int $currentPosition
 	 * @return int
+	 * @throws NumberException
 	 */
 	public function setArrayTokens(array $tokens, int $currentPosition): int
 	{

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mathematicator\Tokenizer\Test;
+namespace Mathematicator\Tokenizer\Tests;
 
 
-use Mathematicator\Engine\Tests\Bootstrap;
+use Mathematicator\Tokenizer\Tests\Bootstrap;
 use Mathematicator\Tokenizer\Tokenizer;
 use Nette\DI\Container;
 use Tester\Assert;
@@ -50,7 +50,7 @@ class QueryToLatexTest extends TestCase
 			['256', '256'],
 			['3+9-1', '3+9-1'],
 			['5\cdot 8', '5*8'],
-			['\left(5+3\right)\cdot 2', '(5+3)*2'],
+			['{\left(5+3\right)}\cdot 2', '(5+3)*2'],
 			['\frac{3}{4}', '3/4'],
 			['\frac{5+3}{2}', '(5+3)/2'],
 			['\infty', 'INF'],

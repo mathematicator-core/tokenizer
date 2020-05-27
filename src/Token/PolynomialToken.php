@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Token;
 
 
-use Mathematicator\Engine\MathematicatorException;
 use Mathematicator\Numbers\NumberException;
 use Mathematicator\Numbers\SmartNumber;
 use Mathematicator\Tokenizer\Tokens;
@@ -30,7 +29,7 @@ class PolynomialToken extends BaseToken
 	 * @param NumberToken $times
 	 * @param NumberToken|null $power (in integer format)
 	 * @param VariableToken $variable
-	 * @throws NumberException|MathematicatorException
+	 * @throws NumberException
 	 */
 	public function __construct(NumberToken $times, ?NumberToken $power, VariableToken $variable)
 	{

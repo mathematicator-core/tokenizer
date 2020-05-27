@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
+use Error;
+
 final class Tokens
 {
 	public const M_NUMBER = 'number';
@@ -45,10 +47,10 @@ final class Tokens
 
 
 	/**
-	 * @throws \Error
+	 * @throws Error
 	 */
 	public function __construct()
 	{
-		throw new \Error('Class ' . get_class($this) . ' is static and cannot be instantiated.');
+		throw new Error('Class ' . get_class($this) . ' is static and cannot be instantiated.');
 	}
 }

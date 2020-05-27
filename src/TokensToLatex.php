@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
-use Mathematicator\Engine\MathematicatorException;
-use Mathematicator\Engine\MathFunction\FunctionManager;
+use function in_array;
+use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Token\ComparatorToken;
 use Mathematicator\Tokenizer\Token\FunctionToken;
 use Mathematicator\Tokenizer\Token\IToken;
@@ -66,7 +66,7 @@ class TokensToLatex
 			'\*' => '\cdot ',
 			'(\d)\\\cdot\s*([a-z])' => '$1$2',
 			'abs\\\left[\(\[\{](.+?)\\\right[\)\]\}]' => '\mid $1 \mid',
-			'\\\(' . implode('|', FunctionManager::getFunctionNames()) . ')\{\\\left\(([^\(\)]+?)\\\right\)\}' => '\\\$1{$2}',
+			'\\\(' . implode('|', Tokenizer::getFunctionNames()) . ')\{\\\left\(([^\(\)]+?)\\\right\)\}' => '\\\$1{$2}',
 			'([+-]?[0-9]*[.]?[0-9]+)[eE]([+-]?[0-9]*[.]?[0-9]+)' => '{$1}^{$2}',
 		];
 	}
@@ -75,7 +75,7 @@ class TokensToLatex
 	/**
 	 * @param IToken[] $tokens
 	 * @return string
-	 * @throws MathematicatorException
+	 * @throws TokenizerException
 	 */
 	public function process(array $tokens): string
 	{
@@ -87,7 +87,7 @@ class TokensToLatex
 	 * @param IToken[] $tokens
 	 * @param int $level
 	 * @return string
-	 * @throws MathematicatorException
+	 * @throws TokenizerException
 	 */
 	private function iterator(array $tokens, int $level = 0): string
 	{
@@ -103,11 +103,11 @@ class TokensToLatex
 				if ($token instanceof FunctionToken) {
 					$latex .= $this->latexTranslateTable($token->getName());
 					$latex .= '{';
-					if (\in_array($token->getName(), $this->noBracketFunctions, true) === false) {
+					if (in_array($token->getName(), $this->noBracketFunctions, true) === false) {
 						$latex .= $this->getLeftBracket($level);
 					}
 					$latex .= $this->iterator($token->getTokens(), $level + 1);
-					if (\in_array($token->getName(), $this->noBracketFunctions, true) === false) {
+					if (in_array($token->getName(), $this->noBracketFunctions, true) === false) {
 						$latex .= $this->getRightBracket($level);
 					}
 					$latex .= '}';
@@ -117,7 +117,7 @@ class TokensToLatex
 					$latex .= $this->getRightBracket($level);
 				}
 			} elseif ($isFunc === true) {
-				$latex .= $this->latexTranslateTable((string) preg_replace('/\(+$/', '', $tk));
+				$latex .= $this->latexTranslateTable((string) preg_replace('/\(+$/', '', (string) $tk));
 			} elseif (($isOperator = $token instanceof OperatorToken) && $tk === '/') { // Fraction x/y
 				$latex .= $this->renderFraction($iterator, $level);
 			} elseif (($isOperator === true && $tk === '^') || ($next !== null && $nextTk === '^')) { // Pow x^y
@@ -125,7 +125,7 @@ class TokensToLatex
 					$latex .= $this->renderPow($iterator, $level);
 				}
 			} elseif ($token instanceof ComparatorToken) { // Comparator x=y
-				$latex .= $this->latexTranslateTable($tk);
+				$latex .= $this->latexTranslateTable((string) $tk);
 			} elseif ($token instanceof RomanNumberToken) { // Roman number XVII
 				$latex .= '\textrm{' . $tk . '}';
 			} elseif ($token instanceof PolynomialToken) {
@@ -144,7 +144,7 @@ class TokensToLatex
 				}
 			} elseif ($token !== null) { // Other tokens (e.g. NumberToken)
 				if ($next === null || ($nextTk !== '/' && $nextTk !== '^')) {
-					$latex .= $this->latexTranslateTable($tk);
+					$latex .= $this->latexTranslateTable((string) $tk);
 				}
 			}
 
@@ -192,7 +192,7 @@ class TokensToLatex
 	 * @param TokenIterator $iterator
 	 * @param int $level
 	 * @return string
-	 * @throws MathematicatorException
+	 * @throws TokenizerException
 	 */
 	private function renderFraction(TokenIterator $iterator, int $level): string
 	{
@@ -220,7 +220,7 @@ class TokensToLatex
 	 * @param TokenIterator $iterator
 	 * @param int $level
 	 * @return string
-	 * @throws MathematicatorException
+	 * @throws TokenizerException
 	 */
 	private function renderPow(TokenIterator $iterator, int $level): string
 	{
