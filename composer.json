@@ -54,7 +54,7 @@
 			"php temp/coding-standard/ecs check src --config temp/coding-standard/coding-standard-php71.yml"
 		],
 		"cs:fix": [
-			"php temp/code-checker/code-checker --short-arrays --strict-types --fix --no-progress",
+			"php temp/code-checker/code-checker -d src -d tests --short-arrays --strict-types --fix --no-progress",
 			"php temp/coding-standard/ecs check src --config temp/coding-standard/coding-standard-php71.yml --fix"
 		],
 		"phpstan": "vendor/bin/phpstan analyse src -c phpstan.neon --level 8 --no-progress",
