@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
+use Mathematicator\Numbers\Exception\NumberException;
 use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Token\IToken;
 use Nette\Tokenizer\Exception;
@@ -20,48 +21,19 @@ class Tokenizer
 	/** @var TokensToObject */
 	private $tokensToObject;
 
-	/** @var FunctionManager|null */
+	/** @var FunctionManagerFacade */
 	private $functionManager;
 
 
 	/**
 	 * @param TokensToLatex $tokenToLatexTranslator
 	 * @param TokensToObject $tokensToObject
+	 * @param FunctionManagerFacade $functionManager
 	 */
-	public function __construct(TokensToLatex $tokenToLatexTranslator, TokensToObject $tokensToObject)
+	public function __construct(TokensToLatex $tokenToLatexTranslator, TokensToObject $tokensToObject, FunctionManagerFacade $functionManager)
 	{
 		$this->tokenToLatexTranslator = $tokenToLatexTranslator;
 		$this->tokensToObject = $tokensToObject;
-	}
-
-
-	/**
-	 * @return string[]
-	 */
-	public function getFunctionNames(): array
-	{
-		if ($this->functionManager === null) {
-			return [];
-		}
-
-		return $this->functionManager->getFunctionNames();
-	}
-
-
-	/**
-	 * @return FunctionManager|null
-	 */
-	public function getFunctionManager(): ?FunctionManager
-	{
-		return $this->functionManager;
-	}
-
-
-	/**
-	 * @param FunctionManager $functionManager
-	 */
-	public function setFunctionManager(FunctionManager $functionManager): void
-	{
 		$this->functionManager = $functionManager;
 	}
 
@@ -80,6 +52,7 @@ class Tokenizer
 	/**
 	 * @param Token[] $tokens
 	 * @return IToken[]
+	 * @throws NumberException
 	 */
 	public function tokensToObject(array $tokens): array
 	{
@@ -125,7 +98,7 @@ class Tokenizer
 			Tokens::M_ROMAN_NUMBER => '[IVXLCDM]+',
 			Tokens::M_VARIABLE => '[a-z]',
 			Tokens::M_WHITESPACE => '\s+',
-			Tokens::M_FUNCTION => implode('|', explode('|', implode('\(|', $this->getFunctionNames()) . '\(')),
+			Tokens::M_FUNCTION => implode('|', explode('|', implode('\(|', $this->functionManager->getFunctionNames()) . '\(')),
 			Tokens::M_STRING => '\w+',
 			Tokens::M_OPERATOR => '[\+\-\*\/\^\!]',
 			Tokens::M_LEFT_BRACKET => '\(',

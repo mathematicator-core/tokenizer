@@ -53,7 +53,7 @@ final class TokensToLatex
 	];
 
 
-	public function __construct(Tokenizer $tokenizer)
+	public function __construct(FunctionManagerFacade $functionManager)
 	{
 		$this->beforeReplaceTable = [
 			'INF' => '\\infty',
@@ -65,7 +65,7 @@ final class TokensToLatex
 			'\*' => '\cdot ',
 			'(\d)\\\cdot\s*([a-z])' => '$1$2',
 			'abs\\\left[\(\[\{](.+?)\\\right[\)\]\}]' => '\mid $1 \mid',
-			'\\\(' . implode('|', $tokenizer->getFunctionNames()) . ')\{\\\left\(([^\(\)]+?)\\\right\)\}' => '\\\$1{$2}',
+			'\\\(' . implode('|', $functionManager->getFunctionNames()) . ')\{\\\left\(([^\(\)]+?)\\\right\)\}' => '\\\$1{$2}',
 			'([+-]?[0-9]*[.]?[0-9]+)[eE]([+-]?[0-9]*[.]?[0-9]+)' => '{$1}^{$2}',
 		];
 	}
