@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
-use function in_array;
 use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Token\ComparatorToken;
 use Mathematicator\Tokenizer\Token\FunctionToken;
@@ -48,9 +47,9 @@ final class TokensToLatex
 	/** @var string[] */
 	private $afterReplaceTable;
 
-	/** @var string[] */
+	/** @var bool[] */
 	private $noBracketFunctions = [
-		'sqrt',
+		'sqrt' => true,
 	];
 
 
@@ -103,11 +102,11 @@ final class TokensToLatex
 				if ($token instanceof FunctionToken) {
 					$latex .= $this->latexTranslateTable($token->getName());
 					$latex .= '{';
-					if (in_array($token->getName(), $this->noBracketFunctions, true) === false) {
+					if (isset($this->noBracketFunctions[$token->getName()]) === false) {
 						$latex .= $this->getLeftBracket($level);
 					}
 					$latex .= $this->iterator($token->getTokens(), $level + 1);
-					if (in_array($token->getName(), $this->noBracketFunctions, true) === false) {
+					if (isset($this->noBracketFunctions[$token->getName()]) === false) {
 						$latex .= $this->getRightBracket($level);
 					}
 					$latex .= '}';
