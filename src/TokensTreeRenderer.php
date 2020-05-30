@@ -12,9 +12,7 @@ use Mathematicator\Tokenizer\Token\SubToken;
 final class TokensTreeRenderer
 {
 
-	/**
-	 * @throws Error
-	 */
+	/** @throws Error */
 	public function __construct()
 	{
 		throw new Error('Class ' . get_class($this) . ' is static and cannot be instantiated.');
