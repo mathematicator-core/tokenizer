@@ -17,7 +17,7 @@ use Mathematicator\Tokenizer\Token\SubToken;
 use Mathematicator\Tokenizer\Token\VariableToken;
 use Nette\Utils\Strings;
 
-class TokensToLatex
+final class TokensToLatex
 {
 
 	/** @var string[] */
@@ -54,7 +54,7 @@ class TokensToLatex
 	];
 
 
-	public function __construct()
+	public function __construct(Tokenizer $tokenizer)
 	{
 		$this->beforeReplaceTable = [
 			'INF' => '\\infty',
@@ -66,7 +66,7 @@ class TokensToLatex
 			'\*' => '\cdot ',
 			'(\d)\\\cdot\s*([a-z])' => '$1$2',
 			'abs\\\left[\(\[\{](.+?)\\\right[\)\]\}]' => '\mid $1 \mid',
-			'\\\(' . implode('|', Tokenizer::getFunctionNames()) . ')\{\\\left\(([^\(\)]+?)\\\right\)\}' => '\\\$1{$2}',
+			'\\\(' . implode('|', $tokenizer->getFunctionNames()) . ')\{\\\left\(([^\(\)]+?)\\\right\)\}' => '\\\$1{$2}',
 			'([+-]?[0-9]*[.]?[0-9]+)[eE]([+-]?[0-9]*[.]?[0-9]+)' => '{$1}^{$2}',
 		];
 	}
