@@ -20,7 +20,7 @@
 		"php": ">=7.2",
 		"nette/utils": "^3.0",
 		"nette/tokenizer": "^3.0",
-		"mathematicator-core/numbers": "^2.0@dev"
+		"mathematicator-core/numbers": "^2.1@dev"
 	},
 	"require-dev": {
 		"brainmaestro/composer-git-hooks": "dev-master",
