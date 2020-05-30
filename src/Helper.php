@@ -11,8 +11,9 @@ use function strlen;
 
 final class Helper
 {
+
 	/** @throws Error */
-	final public function __construct()
+	public function __construct()
 	{
 		throw new Error('Class ' . get_class($this) . ' is static and cannot be instantiated.');
 	}
