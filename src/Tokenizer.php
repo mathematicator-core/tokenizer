@@ -97,7 +97,7 @@ class Tokenizer
 	public function tokensToLatex(array $tokens): string
 	{
 		try {
-			return $this->tokenToLatexTranslator->process($tokens);
+			return $this->tokenToLatexTranslator->render($tokens);
 		} catch (TokenizerException $e) {
 			return '';
 		}

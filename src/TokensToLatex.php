@@ -77,7 +77,7 @@ class TokensToLatex
 	 * @return string
 	 * @throws TokenizerException
 	 */
-	public function process(array $tokens): string
+	public function render(array $tokens): string
 	{
 		return $this->iterator($tokens);
 	}
