@@ -6,7 +6,6 @@ namespace Mathematicator\Tokenizer;
 
 
 use function count;
-use function get_class;
 use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Token\IToken;
 
@@ -28,9 +27,7 @@ class TokenIterator
 	{
 		foreach ($tokens as $token) {
 			if (!$token instanceof IToken) {
-				throw new TokenizerException(
-					'Token "' . get_class($token) . '" is not instance of "' . IToken::class . '".'
-				);
+				TokenizerException::tokenMustBeIToken($token);
 			}
 		}
 

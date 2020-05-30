@@ -40,10 +40,7 @@ class SubToken extends BaseToken
 	{
 		foreach ($tokens ?? [] as $token) {
 			if (!$token instanceof IToken && $token !== null) {
-				throw new TokenizerException(
-					'Token must be instance of "' . IToken::class . '", but type "'
-					. (is_object($token) ? get_class($token) : json_encode($token)) . '" given.'
-				);
+				TokenizerException::tokenMustBeIToken($token);
 			}
 		}
 
