@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Tests;
 
 
-use Mathematicator\Tokenizer\Tests\Bootstrap;
 use Mathematicator\Tokenizer\Tokenizer;
 use Nette\DI\Container;
 use Tester\Assert;
 use Tester\TestCase;
 
-require __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 class QueryToLatexTest extends TestCase
 {

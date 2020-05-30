@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Mathematicator\Tokenizer\Tests;
 
-require __DIR__ . '/../vendor/autoload.php';
-
 
 use Nette\Configurator;
 use Nette\DI\Container;
 use Tester\Environment;
 
-Environment::setup();
+if (\is_file($autoload = __DIR__ . '/../vendor/autoload.php')) {
+	require_once $autoload;
+	Environment::setup();
+}
 
 class Bootstrap
 {
