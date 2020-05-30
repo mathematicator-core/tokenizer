@@ -12,7 +12,7 @@ use Nette\SmartObject;
  * @property int $position
  * @property string $type
  */
-class BaseToken implements IToken
+abstract class BaseToken implements IToken
 {
 	use SmartObject;
 
