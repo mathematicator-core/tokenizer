@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Token;
 
 
-use Mathematicator\Numbers\NumberException;
+use Mathematicator\Numbers\Exception\NumberException;
 use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Tokens;
 use Mathematicator\Tokenizer\TokensToObject;
