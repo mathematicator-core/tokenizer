@@ -20,24 +20,23 @@ jobs:
 
       - name: Install composer dependencies
         run: |
+          # Install code check tools
           composer run cs:install
-
           # Install app dependencies
           composer install --no-interaction --prefer-dist
 
-      # Check code checker and coding standards
       - name: Check coding standards
         run: |
           composer run cs:check
 
       - name: Check PHPStan rules
-        run: vendor/bin/phpstan analyse src -c phpstan.neon --level 8 --no-progress
+        run: composer run phpstan
 
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['7.2', '7.3', '7.4'] # 8.0
+        php: ['7.2', '7.3', '7.4', '8.0']
 
     name: PHP ${{ matrix.php }} tests
     steps:
@@ -52,6 +51,9 @@ jobs:
 
       - name: Install composer dependencies
         run: |
+          # Remove unnecesery packages
+          composer remove phpstan/phpstan phpstan/phpstan-nette --dev --no-interaction
+          # Install app dependencies
           composer install --no-interaction --prefer-dist
 
       - name: Run tests
@@ -65,3 +67,29 @@ jobs:
           flags: unittests
           name: codecov-umbrella
           fail_ci_if_error: true
+
+  benchmark:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.4']
+
+    name: Benchmark on PHP ${{ matrix.php }}
+    steps:
+      - name: Git clone
+        uses: actions/checkout@master
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Install composer dependencies
+        run: |
+          # Install benchmarking tool
+          composer global require phpbench/phpbench @dev
+          # Install app dependencies
+          composer install --no-interaction --prefer-dist
+
+      - name: Run benchmarks
+        run: phpbench run

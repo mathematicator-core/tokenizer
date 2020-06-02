@@ -39,6 +39,6 @@ class FactorialToken extends BaseToken
 	 */
 	public function setNumber(string $number): void
 	{
-		$this->number->setValue((string) preg_replace('/\!+$/', '', $number));
+		$this->number = new SmartNumber((string) preg_replace('/\!+$/', '', $number));
 	}
 }

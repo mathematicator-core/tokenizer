@@ -35,7 +35,7 @@ class PolynomialToken extends BaseToken
 	{
 		if ($power === null) {
 			$this->autoPower = true;
-			$power = new NumberToken(new SmartNumber(0, '1'));
+			$power = new NumberToken(new SmartNumber('1'));
 			$power->setType(Tokens::M_NUMBER);
 			$power->setToken('1');
 			$power->setPosition($times->getPosition() + 1);
