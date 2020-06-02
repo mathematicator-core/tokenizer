@@ -59,36 +59,6 @@ echo $tokenizer->renderTokensTree($objectTokens);
 The tokenizer uses automatic configuration based on DI.
 Just use the DI container and the service will be fully available.
 
-## Contribution
-
-> Please help to improve this documentation by sending a Pull request.
-
-### Tests
-
-All new contributions should have its unit tests in `/tests` directory.
-
-Before you send a PR, please, check all tests pass.
-
-This package uses [Nette Tester](https://tester.nette.org/).
-You can run tests via command:
-```bash
-composer test
-````
-
-For benchmarking, we use [phpbench](https://github.com/phpbench/phpbench).
-You can run benchmarks this way:
-```bash
-composer global require phpbench/phpbench @dev # only the first time
-phpbench run
-````
-
-Before PR, please run complete code check via command:
-```bash
-composer cs:install # only first time
-composer fix # otherwise pre-commit hook can fail
-````
-
-
 ## Mathematicator Framework tools structure
 
 The biggest advantage is that you can choose which layer best fits
@@ -216,3 +186,32 @@ one to the most abstract one:
         </td>
     </tr>
 </table>
+
+## Contribution
+
+> Please help to improve this documentation by sending a Pull request.
+
+### Tests
+
+All new contributions should have its unit tests in `/tests` directory.
+
+Before you send a PR, please, check all tests pass.
+
+This package uses [Nette Tester](https://tester.nette.org/).
+You can run tests via command:
+```bash
+composer test
+````
+
+For benchmarking, we use [phpbench](https://github.com/phpbench/phpbench).
+You can run benchmarks this way:
+```bash
+composer global require phpbench/phpbench @dev # only the first time
+phpbench run
+````
+
+Before PR, please run complete code check via command:
+```bash
+composer cs:install # only first time
+composer fix # otherwise pre-commit hook can fail
+````
