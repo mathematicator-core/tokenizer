@@ -10,7 +10,7 @@ use Nette\DI\Container;
 use Tester\Assert;
 use Tester\TestCase;
 
-require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../Bootstrap.php';
 
 class QueryToLatexTest extends TestCase
 {

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
+use Mathematicator\Numbers\Latex\MathLatexBuilder;
+use Mathematicator\Numbers\Latex\MathLatexToolkit;
 use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Token\ComparatorToken;
 use Mathematicator\Tokenizer\Token\FunctionToken;
@@ -128,16 +130,18 @@ final class TokensToLatex
 			} elseif ($token instanceof RomanNumberToken) { // Roman number XVII
 				$latex .= '\textrm{' . $tk . '}';
 			} elseif ($token instanceof PolynomialToken) {
-				$latex .= ($token->getTimes()->getToken() === '1' ? '' : $token->getTimes()->getNumber()->getString())
+				$latex .= ($token->getTimes()->getToken() === '1' ? '' : $token->getTimes()->getNumber()->getLatex())
 					. ($token->getPower()->getToken() === '1'
 						? $token->getVariable()->getToken()
-						: '{' . $token->getVariable()->getToken() . '}'
-						. '^{' . $token->getPower()->getNumber()->getString() . '}'
+						: (string) MathLatexToolkit::pow(
+							$token->getVariable()->getToken(),
+							$token->getPower()->getNumber()->getLatex()
+						)
 					);
 			} elseif ($token instanceof VariableToken) { // Variable (e.g. x)
 				if ($next === null || ($nextTk !== '/' && $nextTk !== '^')) {
-					$latex .= ($token->getTimes()->isInteger() === false || $token->getTimes()->getInteger() !== '1'
-							? $token->getTimes()->getString()
+					$latex .= (!$token->getTimes()->isInteger() || !$token->getTimes()->getInteger()->isEqualTo(1)
+							? $token->getTimes()->getLatex()
 							: ''
 						) . $tk;
 				}
@@ -148,7 +152,7 @@ final class TokensToLatex
 			}
 
 			$iterator->next();
-		} while ($iterator->isFinal() === false);
+		} while (!$iterator->isFinal());
 
 		return $this->processReplaceTable(
 			$this->processReplaceTable($latex, $this->beforeReplaceTable),
@@ -211,17 +215,17 @@ final class TokensToLatex
 			$nextTokenRender = $nextToken === null ? '?' : $nextToken->getToken();
 		}
 
-		return '\frac{' . $lastTokenRender . '}{' . $nextTokenRender . '}';
+		return (string) MathLatexToolkit::frac($lastTokenRender, $nextTokenRender);
 	}
 
 
 	/**
 	 * @param TokenIterator $iterator
 	 * @param int $level
-	 * @return string
+	 * @return MathLatexBuilder
 	 * @throws TokenizerException
 	 */
-	private function renderPow(TokenIterator $iterator, int $level): string
+	private function renderPow(TokenIterator $iterator, int $level): MathLatexBuilder
 	{
 		$lastToken = $iterator->getLastToken();
 		$nextToken = $iterator->getNextToken();
@@ -243,7 +247,7 @@ final class TokensToLatex
 			$topTokenRender = $nextToken === null ? '?' : $nextToken->getToken();
 		}
 
-		return '{' . $downTokenRender . '}^{' . $topTokenRender . '}';
+		return MathLatexToolkit::pow($downTokenRender, $topTokenRender);
 	}
 
 

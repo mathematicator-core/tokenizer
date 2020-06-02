@@ -16,16 +16,14 @@
 
 Tokenizer is a simple library used to convert math formulas to arrays of tokens.
 
-> Please help to improve this documentation by sending a Pull request.
 
-Install using Composer:
+## Installation
 
 ```
 composer require mathematicator-core/tokenizer
 ```
 
-Idea
-----
+## Features
 
 Imagine you can:
 
@@ -34,8 +32,7 @@ Imagine you can:
 - Solve your math problems using a calculator
 - Render the tokens tree map for debug
 
-How to use
-----------
+## Usage
 
 Inject the `Tokenizer` service through DIC and tokenize your query.
 
@@ -56,6 +53,41 @@ echo $tokenizer->tokensToLatex($objectTokens);
 // Render to debug tree (extremely fast):
 echo $tokenizer->renderTokensTree($objectTokens);
 ```
+
+### Configuration
+
+The tokenizer uses automatic configuration based on DI.
+Just use the DI container and the service will be fully available.
+
+## Contribution
+
+> Please help to improve this documentation by sending a Pull request.
+
+### Tests
+
+All new contributions should have its unit tests in `/tests` directory.
+
+Before you send a PR, please, check all tests pass.
+
+This package uses [Nette Tester](https://tester.nette.org/).
+You can run tests via command:
+```bash
+composer test
+````
+
+For benchmarking, we use [phpbench](https://github.com/phpbench/phpbench).
+You can run benchmarks this way:
+```bash
+composer global require phpbench/phpbench @dev # only the first time
+phpbench run
+````
+
+Before PR, please run complete code check via command:
+```bash
+composer cs:install # only first time
+composer fix # otherwise pre-commit hook can fail
+````
+
 
 ## Mathematicator Framework tools structure
 
@@ -164,24 +196,23 @@ one to the most abstract one:
     </tr>
 </table>
 
-Configuration
--------------
+**Third-party packages:**
 
-The tokenizer uses automatic configuration based on DIC. Just use the DIC container and the service will be fully available.
+⚠️ Not guaranteed!
 
-### Tests
-
-All new contributions should have its unit tests in `/tests` directory.
-
-Before you send a PR, please, check all tests pass.
-
-This package uses [Nette Tester](https://tester.nette.org/). You can run tests via command:
-```bash
-composer test
-````
-
-Before PR, please run complete code check via command:
-```bash
-composer cs:install # only first time
-composer fix # otherwise pre-commit hook can fail
-````
+<table>
+    <tr>
+        <td>
+            <b>
+            <a href="https://github.com/cothema/math-php-api">
+                REST API
+            </a>
+            </b>
+        </td>
+        <td>
+            Install the whole pack as a REST API service
+            on your server (Docker ready) or
+            access it via public cloud REST API.
+        </td>
+    </tr>
+</table>

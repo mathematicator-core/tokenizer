@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
+use Mathematicator\Numbers\Converter\RomanToInt;
 use Mathematicator\Numbers\Exception\NumberException;
-use Mathematicator\Numbers\NumberFactory;
+use Mathematicator\Numbers\SmartNumber;
 use Mathematicator\Tokenizer\Token\ComparatorToken;
 use Mathematicator\Tokenizer\Token\EquationToken;
 use Mathematicator\Tokenizer\Token\FactorialToken;
@@ -25,18 +26,6 @@ use Nette\Tokenizer\Token;
 class TokensToObject
 {
 
-	/** @var NumberFactory */
-	private $numberFactory;
-
-
-	/**
-	 * @param NumberFactory $numberFactory
-	 */
-	public function __construct(NumberFactory $numberFactory)
-	{
-		$this->numberFactory = $numberFactory;
-	}
-
 
 	/**
 	 * @param Token[] $tokens
@@ -51,27 +40,25 @@ class TokensToObject
 			$token = $tokens[$iterator];
 			switch ($token->type) {
 				case Tokens::M_NUMBER:
-					$tokenFactory = new NumberToken($this->numberFactory->create($token->value));
+					$tokenFactory = new NumberToken(new SmartNumber($token->value));
 					break;
 
 				case Tokens::M_ROMAN_NUMBER:
 					$tokenFactory = new RomanNumberToken(
-						$this->numberFactory->create(
-							(string) Helper::romanToInt($token->value)
-						)
+						new SmartNumber(RomanToInt::convert($token->value))
 					);
 					break;
 
 				case Tokens::M_VARIABLE:
 					$tokenFactory = new VariableToken(
 						$token->value,
-						$this->numberFactory->create('1')
+						new SmartNumber('1')
 					);
 					break;
 
 				case Tokens::M_FACTORIAL:
 					$tokenFactory = new FactorialToken(
-						$this->numberFactory->create(str_replace('!', '', $token->value))
+						new SmartNumber(str_replace('!', '', $token->value))
 					);
 					break;
 
@@ -104,7 +91,7 @@ class TokensToObject
 					break;
 
 				case Tokens::M_PI:
-					$tokenFactory = new PiToken($this->numberFactory->create(M_PI));
+					$tokenFactory = new PiToken(new SmartNumber((string) M_PI));
 					break;
 
 				default:
