@@ -44,7 +44,7 @@ class ComplexNumberToken extends BaseToken
 	 */
 	public function setRealNumber(string $value): void
 	{
-		$this->realNumber = new SmartNumber($value);
+		$this->realNumber = SmartNumber::of($value);
 	}
 
 
@@ -63,6 +63,6 @@ class ComplexNumberToken extends BaseToken
 	 */
 	public function setComplexNumber(string $value): void
 	{
-		$this->complexNumber = new SmartNumber($value);
+		$this->complexNumber = SmartNumber::of($value);
 	}
 }

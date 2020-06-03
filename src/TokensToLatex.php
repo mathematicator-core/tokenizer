@@ -130,18 +130,18 @@ final class TokensToLatex
 			} elseif ($token instanceof RomanNumberToken) { // Roman number XVII
 				$latex .= '\textrm{' . $tk . '}';
 			} elseif ($token instanceof PolynomialToken) {
-				$latex .= ($token->getTimes()->getToken() === '1' ? '' : $token->getTimes()->getNumber()->getLatex())
+				$latex .= ($token->getTimes()->getToken() === '1' ? '' : $token->getTimes()->getNumber()->toLatex())
 					. ($token->getPower()->getToken() === '1'
 						? $token->getVariable()->getToken()
 						: (string) MathLatexToolkit::pow(
 							$token->getVariable()->getToken(),
-							$token->getPower()->getNumber()->getLatex()
+							$token->getPower()->getNumber()->toLatex()
 						)
 					);
 			} elseif ($token instanceof VariableToken) { // Variable (e.g. x)
 				if ($next === null || ($nextTk !== '/' && $nextTk !== '^')) {
-					$latex .= (!$token->getTimes()->isInteger() || !$token->getTimes()->getInteger()->isEqualTo(1)
-							? $token->getTimes()->getLatex()
+					$latex .= (!$token->getTimes()->isInteger() || !$token->getTimes()->toBigInteger()->isEqualTo(1)
+							? $token->getTimes()->toLatex()
 							: ''
 						) . $tk;
 				}
