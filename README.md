@@ -1,5 +1,5 @@
 <h1 align="center">
-    Robust PHP math Tokenizer
+    PHP Math Tokenizer
 </h1>
 
 <p align="center">
@@ -14,7 +14,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](./LICENSE)
 [![PHPStan Enabled](https://img.shields.io/badge/PHPStan-enabled%20L8-brightgreen.svg?style=flat)](https://phpstan.org/)
 
-Tokenizer is a simple library used to convert math formulas to arrays of tokens.
+Mathematicator Tokenizer is a simple library, used to convert string math formulas to
+a stream of tokens, with LaTeX support.
 
 ## Installation
 
@@ -24,18 +25,18 @@ composer require mathematicator-core/tokenizer
 
 ## Features
 
-Imagine you can:
-
 - Convert all your math formulas to a stream of tokens
 - Convert user math input to LaTeX
-- Solve your math problems using a calculator
 - Render the tokens tree map for debug
 
 ## Usage
 
-Inject the `Tokenizer` service through DIC and tokenize your query.
+Inject the `Tokenizer` service via [DI](https://doc.nette.org/en/3.0/dependency-injection)
+and tokenize your query.
 
 ```php
+use \Mathematicator\Tokenizer\Tokenizer;
+
 $tokenizer = new Tokenizer(/* some dependencies */);
 
 // Convert math formula to an array of tokens:
@@ -44,7 +45,7 @@ $tokens = $tokenizer->tokenize('(5+3)*(2/(7+3))');
 // Now you can convert tokens to a more useful format:
 $objectTokens = $tokenizer->tokensToObject($tokens);
 
-dump($objectTokens); // Return typed tokens with meta data
+var_dump($objectTokens); // Return typed tokens with meta data
 
 // Render to LaTeX
 echo $tokenizer->tokensToLatex($objectTokens);
