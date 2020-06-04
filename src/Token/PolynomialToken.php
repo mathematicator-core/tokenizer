@@ -6,6 +6,8 @@ namespace Mathematicator\Tokenizer\Token;
 
 
 use Mathematicator\Numbers\Exception\NumberException;
+use Mathematicator\Numbers\Latex\MathLatexBuilder;
+use Mathematicator\Numbers\Latex\MathLatexToolkit;
 use Mathematicator\Numbers\SmartNumber;
 use Mathematicator\Tokenizer\Tokens;
 
@@ -35,19 +37,22 @@ class PolynomialToken extends BaseToken
 	{
 		if ($power === null) {
 			$this->autoPower = true;
-			$power = new NumberToken(new SmartNumber('1'));
-			$power->setType(Tokens::M_NUMBER);
-			$power->setToken('1');
-			$power->setPosition($times->getPosition() + 1);
+			$power = new NumberToken(SmartNumber::of(1));
+			$power->setType(Tokens::M_NUMBER)
+				->setToken('1')
+				->setPosition($times->getPosition() + 1);
 		}
 
 		$this->times = $times;
 		$this->power = $power;
 		$this->variable = $variable;
 
-		$this->setToken($times->getToken() . '\cdot {' . $variable->getToken() . '}^{' . $power->getToken() . '}');
-		$this->setType(Tokens::M_POLYNOMIAL);
-		$this->setPosition($times->getPosition());
+		$this->setToken(
+			(string) (new MathLatexBuilder($times->getToken()))
+				->multipliedBy(MathLatexToolkit::pow($variable->getToken(), $power->getToken()))
+		)
+			->setType(Tokens::M_POLYNOMIAL)
+			->setPosition($times->getPosition());
 	}
 
 

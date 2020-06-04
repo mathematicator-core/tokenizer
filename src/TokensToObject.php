@@ -40,25 +40,25 @@ class TokensToObject
 			$token = $tokens[$iterator];
 			switch ($token->type) {
 				case Tokens::M_NUMBER:
-					$tokenFactory = new NumberToken(new SmartNumber($token->value));
+					$tokenFactory = new NumberToken(SmartNumber::of($token->value));
 					break;
 
 				case Tokens::M_ROMAN_NUMBER:
 					$tokenFactory = new RomanNumberToken(
-						new SmartNumber(RomanToInt::convert($token->value))
+						SmartNumber::of(RomanToInt::convert($token->value))
 					);
 					break;
 
 				case Tokens::M_VARIABLE:
 					$tokenFactory = new VariableToken(
 						$token->value,
-						new SmartNumber('1')
+						SmartNumber::of(1)
 					);
 					break;
 
 				case Tokens::M_FACTORIAL:
 					$tokenFactory = new FactorialToken(
-						new SmartNumber(str_replace('!', '', $token->value))
+						SmartNumber::of(str_replace('!', '', $token->value))
 					);
 					break;
 
@@ -91,7 +91,7 @@ class TokensToObject
 					break;
 
 				case Tokens::M_PI:
-					$tokenFactory = new PiToken(new SmartNumber((string) M_PI));
+					$tokenFactory = new PiToken(SmartNumber::of(M_PI));
 					break;
 
 				default:
