@@ -14,8 +14,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](./LICENSE)
 [![PHPStan Enabled](https://img.shields.io/badge/PHPStan-enabled%20L8-brightgreen.svg?style=flat)](https://phpstan.org/)
 
-Mathematicator Tokenizer is a simple library, used to convert string math formulas to
-a stream of tokens, with LaTeX support.
+Mathematicator Tokenizer is a simple library for converting string math formulas to
+a stream of tokens with LaTeX support.
 
 ## Installation
 
