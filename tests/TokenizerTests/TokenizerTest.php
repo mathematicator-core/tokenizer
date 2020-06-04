@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Tests;
 
 
+use Mathematicator\Tokenizer\Token\VariableToken;
 use Mathematicator\Tokenizer\Tokenizer;
 use Nette\DI\Container;
+use Nette\Tokenizer\Token;
 use Tester\Assert;
 use Tester\TestCase;
 
 require_once __DIR__ . '/../Bootstrap.php';
 
-class QueryToLatexTest extends TestCase
+class TokenizerTest extends TestCase
 {
 
 	/** @var Tokenizer */
@@ -25,12 +27,29 @@ class QueryToLatexTest extends TestCase
 	}
 
 
+	public function testTokensToObject(): void
+	{
+		$tokens = [
+			new Token('x', 'variable', 0),
+			new Token('y', 'variable', 1),
+		];
+
+		/** @var VariableToken[] $objectTokens */
+		$objectTokens = $this->tokenizer->tokensToObject($tokens);
+
+		Assert::true($objectTokens[0] instanceof VariableToken);
+		Assert::true($objectTokens[1] instanceof VariableToken);
+		Assert::same('x', $objectTokens[0]->getToken());
+		Assert::same('y', $objectTokens[1]->getToken());
+	}
+
+
 	/**
 	 * @dataProvider getQueries
 	 * @param string $normalizedQuery Query have to be already normalized! Normalizer is not a part of dependencies.
 	 * @param string $expectedLatex
 	 */
-	public function testOne(string $expectedLatex, string $normalizedQuery): void
+	public function testTokensToLatex(string $expectedLatex, string $normalizedQuery): void
 	{
 		$tokens = $this->tokenizer->tokenize($normalizedQuery);
 		$objectTokens = $this->tokenizer->tokensToObject($tokens);
@@ -81,4 +100,4 @@ class QueryToLatexTest extends TestCase
 	}
 }
 
-(new QueryToLatexTest(Bootstrap::boot()))->run();
+(new TokensToLatexTest(Bootstrap::boot()))->run();
