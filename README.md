@@ -10,7 +10,8 @@
 
 [![Integrity check](https://github.com/mathematicator-core/tokenizer/workflows/Integrity%20check/badge.svg)](https://github.com/mathematicator-core/tokenizer/actions?query=workflow%3A%22Integrity+check%22)
 [![codecov](https://codecov.io/gh/mathematicator-core/tokenizer/branch/master/graph/badge.svg)](https://codecov.io/gh/mathematicator-core/tokenizer)
-[![Latest stable version](https://poser.pugx.org/mathematicator-core/tokenizer/v/stable)](https://packagist.org/packages/mathematicator-core/tokenizer)
+[![Latest Stable Version](https://poser.pugx.org/mathematicator-core/tokenizer/v/stable)](https://packagist.org/packages/mathematicator-core/tokenizer)
+[![Latest Unstable Version](https://poser.pugx.org/mathematicator-core/tokenizer/v/unstable)](https://packagist.org/packages/mathematicator-core/tokenizer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](./LICENSE)
 [![PHPStan Enabled](https://img.shields.io/badge/PHPStan-enabled%20L8-brightgreen.svg?style=flat)](https://phpstan.org/)
 

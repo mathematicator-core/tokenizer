@@ -20,7 +20,7 @@
 		"php": ">=7.2",
 		"nette/utils": "^3.0",
 		"nette/tokenizer": "^3.0",
-		"mathematicator-core/numbers": "^2.1@dev"
+		"mathematicator-core/numbers": "^2.2@dev"
 	},
 	"require-dev": {
 		"brainmaestro/composer-git-hooks": "dev-master",
@@ -73,7 +73,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "2.1.x-dev"
+			"dev-master": "2.2.x-dev"
 		},
 		"hooks": {
 			"post-merge": "composer install",
