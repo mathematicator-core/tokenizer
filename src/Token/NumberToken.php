@@ -27,4 +27,15 @@ class NumberToken extends BaseToken
 	{
 		return $this->number;
 	}
+
+
+	/**
+	 * @param SmartNumber $number
+	 * @return NumberToken
+	 */
+	public function setNumber(SmartNumber $number): self
+	{
+		$this->number = $number;
+		return $this;
+	}
 }
