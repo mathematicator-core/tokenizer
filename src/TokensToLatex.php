@@ -161,30 +161,18 @@ final class TokensToLatex
 	}
 
 
-	/**
-	 * @param string $token
-	 * @return string
-	 */
 	private function latexTranslateTable(string $token): string
 	{
 		return self::$charTable[$token] ?? $token;
 	}
 
 
-	/**
-	 * @param int $level
-	 * @return string
-	 */
 	private function getLeftBracket(int $level): string
 	{
 		return ['\\left(', '\\left[', '\\left\\{'][$level % 3];
 	}
 
 
-	/**
-	 * @param int $level
-	 * @return string
-	 */
 	private function getRightBracket(int $level): string
 	{
 		return ['\\right)', '\\right]', '\\right\\}'][$level % 3];
@@ -192,9 +180,6 @@ final class TokensToLatex
 
 
 	/**
-	 * @param TokenIterator $iterator
-	 * @param int $level
-	 * @return string
 	 * @throws TokenizerException
 	 */
 	private function renderFraction(TokenIterator $iterator, int $level): string
@@ -208,7 +193,6 @@ final class TokensToLatex
 		} else {
 			$lastTokenRender = $lastToken === null ? '?' : $lastToken->getToken();
 		}
-
 		if ($nextToken instanceof SubToken) {
 			$nextTokenRender = $this->iterator($nextToken->getTokens(), $level);
 		} else {
@@ -220,9 +204,6 @@ final class TokensToLatex
 
 
 	/**
-	 * @param TokenIterator $iterator
-	 * @param int $level
-	 * @return MathLatexBuilder
 	 * @throws TokenizerException
 	 */
 	private function renderPow(TokenIterator $iterator, int $level): MathLatexBuilder
@@ -238,7 +219,6 @@ final class TokensToLatex
 		} else {
 			$downTokenRender = $lastToken === null ? '?' : $lastToken->getToken();
 		}
-
 		if ($nextToken instanceof SubToken) {
 			$topTokenRender = $this->getLeftBracket($level)
 				. $this->iterator($nextToken->getTokens(), $level)
@@ -254,7 +234,6 @@ final class TokensToLatex
 	/**
 	 * Fix generated haystack by smart regular patterns.
 	 *
-	 * @param string $haystack
 	 * @param string[] $replaceTable
 	 * @return string
 	 */

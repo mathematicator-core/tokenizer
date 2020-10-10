@@ -23,9 +23,8 @@ use Mathematicator\Tokenizer\Token\SubToken;
 use Mathematicator\Tokenizer\Token\VariableToken;
 use Nette\Tokenizer\Token;
 
-class TokensToObject
+final class TokensToObject
 {
-
 
 	/**
 	 * @param Token[] $tokens

@@ -15,18 +15,12 @@ class FactorialToken extends BaseToken
 	private $number;
 
 
-	/**
-	 * @param SmartNumber $number
-	 */
 	public function __construct(SmartNumber $number)
 	{
 		$this->number = $number;
 	}
 
 
-	/**
-	 * @return SmartNumber
-	 */
 	public function getNumber(): SmartNumber
 	{
 		return $this->number;
@@ -34,7 +28,6 @@ class FactorialToken extends BaseToken
 
 
 	/**
-	 * @param string $number
 	 * @throws NumberException
 	 */
 	public function setNumber(string $number): void

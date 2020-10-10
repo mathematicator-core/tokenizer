@@ -23,9 +23,6 @@ class SubToken extends BaseToken
 	private $tokensToObject;
 
 
-	/**
-	 * @param TokensToObject $tokensToObject
-	 */
 	public function __construct(TokensToObject $tokensToObject)
 	{
 		$this->tokensToObject = $tokensToObject;

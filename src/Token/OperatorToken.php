@@ -14,19 +14,12 @@ class OperatorToken extends BaseToken
 	private $priority = 100;
 
 
-	/**
-	 * @return int
-	 */
 	public function getPriority(): int
 	{
 		return $this->priority;
 	}
 
 
-	/**
-	 * @param string $value
-	 * @return IToken
-	 */
 	public function setPriority(string $value): IToken
 	{
 		$priority = [

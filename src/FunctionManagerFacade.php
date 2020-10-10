@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
-class FunctionManagerFacade
+final class FunctionManagerFacade
 {
 
 	/** @var FunctionManager|null */
@@ -25,18 +25,12 @@ class FunctionManagerFacade
 	}
 
 
-	/**
-	 * @return FunctionManager|null
-	 */
 	public function getFunctionManager(): ?FunctionManager
 	{
 		return $this->functionManager;
 	}
 
 
-	/**
-	 * @param FunctionManager $functionManager
-	 */
 	public function setFunctionManager(FunctionManager $functionManager): void
 	{
 		$this->functionManager = $functionManager;

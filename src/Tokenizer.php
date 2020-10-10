@@ -12,7 +12,7 @@ use Nette\Tokenizer\Exception;
 use Nette\Tokenizer\Token;
 use Nette\Tokenizer\Tokenizer as NetteTokenizer;
 
-class Tokenizer
+final class Tokenizer
 {
 
 	/** @var TokensToLatex */
@@ -25,11 +25,6 @@ class Tokenizer
 	private $functionManager;
 
 
-	/**
-	 * @param TokensToLatex $tokenToLatexTranslator
-	 * @param TokensToObject $tokensToObject
-	 * @param FunctionManagerFacade $functionManager
-	 */
 	public function __construct(TokensToLatex $tokenToLatexTranslator, TokensToObject $tokensToObject, FunctionManagerFacade $functionManager)
 	{
 		$this->tokenToLatexTranslator = $tokenToLatexTranslator;
@@ -39,7 +34,6 @@ class Tokenizer
 
 
 	/**
-	 * @param string $query
 	 * @return Token[]
 	 * @throws Exception
 	 */

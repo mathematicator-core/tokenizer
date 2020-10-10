@@ -24,12 +24,6 @@ class IntervalToken extends BaseToken
 	private $toType;
 
 
-	/**
-	 * @param IToken $from
-	 * @param IToken $to
-	 * @param string $fromType
-	 * @param string $toType
-	 */
 	public function __construct(IToken $from, IToken $to, string $fromType = self::TYPE_OPEN, string $toType = self::TYPE_OPEN)
 	{
 		$this->from = $from;
@@ -39,36 +33,24 @@ class IntervalToken extends BaseToken
 	}
 
 
-	/**
-	 * @return IToken
-	 */
 	public function getFrom(): IToken
 	{
 		return $this->from;
 	}
 
 
-	/**
-	 * @return IToken
-	 */
 	public function getTo(): IToken
 	{
 		return $this->to;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getFromType(): string
 	{
 		return $this->fromType;
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getToType(): string
 	{
 		return $this->toType;

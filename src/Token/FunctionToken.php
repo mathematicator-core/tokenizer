@@ -12,9 +12,6 @@ class FunctionToken extends SubToken
 	private $name;
 
 
-	/**
-	 * @return string
-	 */
 	public function getName(): string
 	{
 		return $this->name;

@@ -26,19 +26,12 @@ abstract class BaseToken implements IToken
 	private $type;
 
 
-	/**
-	 * @return string
-	 */
 	public function getToken(): string
 	{
 		return $this->token;
 	}
 
 
-	/**
-	 * @param string $token
-	 * @return IToken
-	 */
 	public function setToken(string $token): IToken
 	{
 		$this->token = $token;
@@ -47,19 +40,12 @@ abstract class BaseToken implements IToken
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getPosition(): int
 	{
 		return $this->position ?? 0;
 	}
 
 
-	/**
-	 * @param int $position
-	 * @return IToken
-	 */
 	public function setPosition(int $position): IToken
 	{
 		$this->position = $position;
@@ -68,19 +54,12 @@ abstract class BaseToken implements IToken
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getType(): string
 	{
 		return $this->type;
 	}
 
 
-	/**
-	 * @param string $type
-	 * @return IToken
-	 */
 	public function setType(string $type): IToken
 	{
 		$this->type = $type;
@@ -89,9 +68,6 @@ abstract class BaseToken implements IToken
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function __toString(): string
 	{
 		return $this->getToken();

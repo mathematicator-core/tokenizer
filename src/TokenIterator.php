@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer;
 
 
-use function count;
 use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Token\IToken;
+use function count;
 
 class TokenIterator
 {
@@ -35,36 +35,24 @@ class TokenIterator
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getCount(): int
 	{
 		return count($this->tokens);
 	}
 
 
-	/**
-	 * @return IToken|null
-	 */
 	public function getToken(): ?IToken
 	{
 		return $this->tokens[$this->iterator] ?? null;
 	}
 
 
-	/**
-	 * @param IToken $token
-	 */
 	public function setToken(IToken $token): void
 	{
 		$this->tokens[$this->iterator] = $token;
 	}
 
 
-	/**
-	 * @return int
-	 */
 	public function getIterator(): int
 	{
 		return $this->iterator;
@@ -77,10 +65,6 @@ class TokenIterator
 	}
 
 
-	/**
-	 * @param int $step
-	 * @return IToken|null
-	 */
 	public function getNextToken(int $step = 1): ?IToken
 	{
 		return $this->tokens[$this->iterator + $step] ?? null;
@@ -93,19 +77,12 @@ class TokenIterator
 	}
 
 
-	/**
-	 * @param int $step
-	 * @return IToken|null
-	 */
 	public function getLastToken(int $step = 1): ?IToken
 	{
 		return $this->tokens[$this->iterator - $step] ?? null;
 	}
 
 
-	/**
-	 * @return bool
-	 */
 	public function isFinal(): bool
 	{
 		return !isset($this->tokens[$this->iterator]);

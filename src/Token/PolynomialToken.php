@@ -28,9 +28,6 @@ class PolynomialToken extends BaseToken
 
 
 	/**
-	 * @param NumberToken $times
-	 * @param NumberToken|null $power (in integer format)
-	 * @param VariableToken $variable
 	 * @throws NumberException
 	 */
 	public function __construct(NumberToken $times, ?NumberToken $power, VariableToken $variable)
@@ -44,7 +41,7 @@ class PolynomialToken extends BaseToken
 		}
 
 		$this->times = $times;
-		$this->power = $power;
+		$this->power = $power; // in integer formar
 		$this->variable = $variable;
 
 		$this->setToken(
@@ -56,36 +53,24 @@ class PolynomialToken extends BaseToken
 	}
 
 
-	/**
-	 * @return NumberToken
-	 */
 	public function getTimes(): NumberToken
 	{
 		return $this->times;
 	}
 
 
-	/**
-	 * @return NumberToken
-	 */
 	public function getPower(): NumberToken
 	{
 		return $this->power;
 	}
 
 
-	/**
-	 * @return VariableToken
-	 */
 	public function getVariable(): VariableToken
 	{
 		return $this->variable;
 	}
 
 
-	/**
-	 * @return bool
-	 */
 	public function isAutoPower(): bool
 	{
 		return $this->autoPower;

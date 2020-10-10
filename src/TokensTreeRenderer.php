@@ -23,7 +23,6 @@ final class TokensTreeRenderer
 	 * Render simple tree view to HTML.
 	 *
 	 * @param IToken[] $tokens
-	 * @param int $level
 	 * @return string
 	 */
 	public static function render(array $tokens, int $level = 0): string

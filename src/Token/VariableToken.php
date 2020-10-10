@@ -15,10 +15,6 @@ class VariableToken extends BaseToken
 	private $times;
 
 
-	/**
-	 * @param string $token
-	 * @param SmartNumber $times
-	 */
 	public function __construct(string $token, SmartNumber $times)
 	{
 		$this->setToken($token);
@@ -27,9 +23,6 @@ class VariableToken extends BaseToken
 	}
 
 
-	/**
-	 * @return SmartNumber
-	 */
 	public function getTimes(): SmartNumber
 	{
 		return $this->times;
