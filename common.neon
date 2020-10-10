@@ -1,5 +1,2 @@
-services:
-	- Mathematicator\Tokenizer\Tokenizer
-	- Mathematicator\Tokenizer\TokensToObject
-	- Mathematicator\Tokenizer\TokensToLatex
-	- Mathematicator\Tokenizer\FunctionManagerFacade
+extensions:
+	mathematicator.tokenizer: Mathematicator\Tokenizer\TokenizerExtension
