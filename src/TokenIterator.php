@@ -7,7 +7,6 @@ namespace Mathematicator\Tokenizer;
 
 use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Token\IToken;
-use function count;
 
 class TokenIterator
 {
@@ -37,7 +36,7 @@ class TokenIterator
 
 	public function getCount(): int
 	{
-		return count($this->tokens);
+		return \count($this->tokens);
 	}
 
 
