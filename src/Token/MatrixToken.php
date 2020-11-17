@@ -13,7 +13,7 @@ class MatrixToken extends BaseToken
 {
 
 	/** @var SmartNumber[][] */
-	private $matrix;
+	private array $matrix;
 
 
 	/**

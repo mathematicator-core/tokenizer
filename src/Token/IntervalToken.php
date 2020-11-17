@@ -11,17 +11,13 @@ class IntervalToken extends BaseToken
 
 	public const TYPE_CLOSED = 'closed';
 
-	/** @var IToken */
-	private $from;
+	private IToken $from;
 
-	/** @var string */
-	private $fromType;
+	private IToken $to;
 
-	/** @var IToken */
-	private $to;
+	private string $fromType;
 
-	/** @var string */
-	private $toType;
+	private string $toType;
 
 
 	public function __construct(IToken $from, IToken $to, string $fromType = self::TYPE_OPEN, string $toType = self::TYPE_OPEN)

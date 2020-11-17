@@ -10,9 +10,7 @@ use Mathematicator\Tokenizer\Tokens;
 
 class VariableToken extends BaseToken
 {
-
-	/** @var SmartNumber */
-	private $times;
+	private SmartNumber $times;
 
 
 	public function __construct(string $token, SmartNumber $times)

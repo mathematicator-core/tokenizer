@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Exceptions;
 
 
-use Exception;
+use InvalidArgumentException;
 use Mathematicator\Tokenizer\Token\IToken;
 
-class TokenizerException extends Exception
+class TokenizerException extends InvalidArgumentException
 {
 
 	/**

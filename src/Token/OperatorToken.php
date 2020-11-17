@@ -9,9 +9,7 @@ use function in_array;
 
 class OperatorToken extends BaseToken
 {
-
-	/** @var int */
-	private $priority = 100;
+	private int $priority = 100;
 
 
 	public function getPriority(): int

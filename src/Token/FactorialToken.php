@@ -10,9 +10,7 @@ use Mathematicator\Numbers\SmartNumber;
 
 class FactorialToken extends BaseToken
 {
-
-	/** @var SmartNumber */
-	private $number;
+	private SmartNumber $number;
 
 
 	public function __construct(SmartNumber $number)

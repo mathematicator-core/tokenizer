@@ -9,9 +9,7 @@ use Mathematicator\Numbers\SmartNumber;
 
 class NumberToken extends BaseToken
 {
-
-	/** @var SmartNumber */
-	private $number;
+	private SmartNumber $number;
 
 
 	public function __construct(SmartNumber $number)

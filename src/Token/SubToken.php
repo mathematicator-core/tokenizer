@@ -9,18 +9,15 @@ use Mathematicator\Numbers\Exception\NumberException;
 use Mathematicator\Tokenizer\Exceptions\TokenizerException;
 use Mathematicator\Tokenizer\Tokens;
 use Mathematicator\Tokenizer\TokensToObject;
-use Nette\SmartObject;
 use Nette\Tokenizer\Token;
 
 class SubToken extends BaseToken
 {
-	use SmartObject;
 
 	/** @var IToken[] */
-	private $tokens = [];
+	private array $tokens = [];
 
-	/** @var TokensToObject */
-	private $tokensToObject;
+	private TokensToObject $tokensToObject;
 
 
 	public function __construct(TokensToObject $tokensToObject)
@@ -49,8 +46,6 @@ class SubToken extends BaseToken
 	 * Set token array and convert to object array.
 	 *
 	 * @param Token[] $tokens
-	 * @param int $currentPosition
-	 * @return int
 	 * @throws NumberException
 	 */
 	public function setArrayTokens(array $tokens, int $currentPosition): int

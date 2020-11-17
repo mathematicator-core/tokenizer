@@ -7,9 +7,7 @@ namespace Mathematicator\Tokenizer;
 
 final class FunctionManagerFacade
 {
-
-	/** @var FunctionManager|null */
-	private $functionManager;
+	private ?FunctionManager $functionManager = null;
 
 
 	/**

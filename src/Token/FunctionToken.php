@@ -7,9 +7,7 @@ namespace Mathematicator\Tokenizer\Token;
 
 class FunctionToken extends SubToken
 {
-
-	/** @var string */
-	private $name;
+	private string $name;
 
 
 	public function getName(): string

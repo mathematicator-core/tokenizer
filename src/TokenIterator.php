@@ -12,10 +12,9 @@ class TokenIterator
 {
 
 	/** @var IToken[] */
-	private $tokens;
+	private array $tokens;
 
-	/** @var int */
-	private $iterator = 0;
+	private int $iterator = 0;
 
 
 	/**

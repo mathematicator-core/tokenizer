@@ -46,9 +46,7 @@ final class Tokens
 	public const M_OTHER = 'other';
 
 
-	/**
-	 * @throws Error
-	 */
+	/** @throws Error */
 	public function __construct()
 	{
 		throw new Error('Class ' . get_class($this) . ' is static and cannot be instantiated.');

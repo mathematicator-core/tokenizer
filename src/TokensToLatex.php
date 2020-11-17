@@ -22,7 +22,7 @@ final class TokensToLatex
 {
 
 	/** @var string[] */
-	private static $charTable = [
+	private static array $charTable = [
 		'sin' => '\\sin',
 		'cos' => '\\cos',
 		'tan' => '\\tan',
@@ -44,13 +44,13 @@ final class TokensToLatex
 	];
 
 	/** @var string[] */
-	private $beforeReplaceTable;
+	private array $beforeReplaceTable;
 
 	/** @var string[] */
-	private $afterReplaceTable;
+	private array $afterReplaceTable;
 
 	/** @var bool[] */
-	private $noBracketFunctions = [
+	private array $noBracketFunctions = [
 		'sqrt' => true,
 	];
 

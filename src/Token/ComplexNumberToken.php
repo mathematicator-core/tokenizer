@@ -10,12 +10,9 @@ use Mathematicator\Numbers\SmartNumber;
 
 class ComplexNumberToken extends BaseToken
 {
+	private SmartNumber $realNumber;
 
-	/** @var SmartNumber */
-	private $realNumber;
-
-	/** @var SmartNumber */
-	private $complexNumber;
+	private SmartNumber $complexNumber;
 
 
 	public function __construct(SmartNumber $realNumber, SmartNumber $complexNumber)

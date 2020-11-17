@@ -16,14 +16,11 @@ abstract class BaseToken implements IToken
 {
 	use SmartObject;
 
-	/** @var string */
-	private $token;
+	private string $token;
 
-	/** @var int */
-	private $position;
+	private int $position;
 
-	/** @var string */
-	private $type;
+	private string $type;
 
 
 	public function getToken(): string

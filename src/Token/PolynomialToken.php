@@ -13,18 +13,13 @@ use Mathematicator\Tokenizer\Tokens;
 
 class PolynomialToken extends BaseToken
 {
+	private NumberToken $times;
 
-	/** @var NumberToken */
-	private $times;
+	private NumberToken $power;
 
-	/** @var NumberToken */
-	private $power;
+	private VariableToken $variable;
 
-	/** @var VariableToken */
-	private $variable;
-
-	/** @var bool */
-	private $autoPower = false;
+	private bool $autoPower = false;
 
 
 	/**

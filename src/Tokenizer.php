@@ -14,15 +14,11 @@ use Nette\Tokenizer\Tokenizer as NetteTokenizer;
 
 final class Tokenizer
 {
+	private TokensToLatex $tokenToLatexTranslator;
 
-	/** @var TokensToLatex */
-	private $tokenToLatexTranslator;
+	private TokensToObject $tokensToObject;
 
-	/** @var TokensToObject */
-	private $tokensToObject;
-
-	/** @var FunctionManagerFacade */
-	private $functionManager;
+	private FunctionManagerFacade $functionManager;
 
 
 	public function __construct(TokensToLatex $tokenToLatexTranslator, TokensToObject $tokensToObject, FunctionManagerFacade $functionManager)
@@ -56,7 +52,6 @@ final class Tokenizer
 
 	/**
 	 * @param IToken[] $tokens
-	 * @return string
 	 */
 	public function tokensToLatex(array $tokens): string
 	{
@@ -72,7 +67,6 @@ final class Tokenizer
 	 * Method return debug tree as HTML string.
 	 *
 	 * @param IToken[] $tokens
-	 * @return string
 	 */
 	public function renderTokensTree(array $tokens): string
 	{
