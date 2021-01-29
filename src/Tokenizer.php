@@ -21,8 +21,11 @@ final class Tokenizer
 	private FunctionManagerFacade $functionManager;
 
 
-	public function __construct(TokensToLatex $tokenToLatexTranslator, TokensToObject $tokensToObject, FunctionManagerFacade $functionManager)
-	{
+	public function __construct(
+		TokensToLatex $tokenToLatexTranslator,
+		TokensToObject $tokensToObject,
+		FunctionManagerFacade $functionManager
+	) {
 		$this->tokenToLatexTranslator = $tokenToLatexTranslator;
 		$this->tokensToObject = $tokensToObject;
 		$this->functionManager = $functionManager;

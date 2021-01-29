@@ -41,7 +41,7 @@ class PolynomialToken extends BaseToken
 
 		$this->setToken(
 			(string) (new MathLatexBuilder($times->getToken()))
-				->multipliedBy(MathLatexToolkit::pow($variable->getToken(), $power->getToken()))
+				->multipliedBy(MathLatexToolkit::pow($variable->getToken(), $power->getToken())),
 		)
 			->setType(Tokens::M_POLYNOMIAL)
 			->setPosition($times->getPosition());

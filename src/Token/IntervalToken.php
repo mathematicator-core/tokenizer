@@ -20,8 +20,12 @@ class IntervalToken extends BaseToken
 	private string $toType;
 
 
-	public function __construct(IToken $from, IToken $to, string $fromType = self::TYPE_OPEN, string $toType = self::TYPE_OPEN)
-	{
+	public function __construct(
+		IToken $from,
+		IToken $to,
+		string $fromType = self::TYPE_OPEN,
+		string $toType = self::TYPE_OPEN
+	) {
 		$this->from = $from;
 		$this->to = $to;
 		$this->fromType = $fromType;

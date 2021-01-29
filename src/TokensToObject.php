@@ -25,7 +25,6 @@ use Nette\Tokenizer\Token;
 
 final class TokensToObject
 {
-
 	/**
 	 * @param Token[] $tokens
 	 * @return IToken[]
@@ -44,38 +43,38 @@ final class TokensToObject
 
 				case Tokens::M_ROMAN_NUMBER:
 					$tokenFactory = new RomanNumberToken(
-						SmartNumber::of(RomanToInt::convert($token->value))
+						SmartNumber::of(RomanToInt::convert($token->value)),
 					);
 					break;
 
 				case Tokens::M_VARIABLE:
 					$tokenFactory = new VariableToken(
 						$token->value,
-						SmartNumber::of(1)
+						SmartNumber::of(1),
 					);
 					break;
 
 				case Tokens::M_FACTORIAL:
 					$tokenFactory = new FactorialToken(
-						SmartNumber::of(str_replace('!', '', $token->value))
+						SmartNumber::of(str_replace('!', '', $token->value)),
 					);
 					break;
 
 				case Tokens::M_INFINITY:
-					$tokenFactory = new InfinityToken();
+					$tokenFactory = new InfinityToken;
 					break;
 
 				case Tokens::M_OPERATOR:
-					$tokenFactory = new OperatorToken();
+					$tokenFactory = new OperatorToken;
 					$tokenFactory->setPriority($token->value);
 					break;
 
 				case Tokens::M_EQUATION:
-					$tokenFactory = new EquationToken();
+					$tokenFactory = new EquationToken;
 					break;
 
 				case Tokens::M_COMPARATOR:
-					$tokenFactory = new ComparatorToken();
+					$tokenFactory = new ComparatorToken;
 					break;
 
 				case Tokens::M_LEFT_BRACKET:

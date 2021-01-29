@@ -97,9 +97,23 @@ final class TokensToLatex
 
 		do {
 			$tk = ($token = $iterator->getToken()) === null ? null : $token->getToken();
-			$nextTk = ($next = $iterator->getNextToken()) === null ? null : $next->getToken();
+			$nextTk = ($next = $iterator->getNextToken()) === null
+				? null
+				: $next->getToken();
 			$isFunc = $token instanceof FunctionToken;
-			if (($isFunc === true || $token instanceof SubToken) && ($next === null || ($nextTk !== '/' && $nextTk !== '^'))) {
+			if (
+				(
+					$isFunc === true
+					|| $token instanceof SubToken
+				)
+				&& (
+					$next === null
+					|| (
+						$nextTk !== '/'
+						&& $nextTk !== '^'
+					)
+				)
+			) {
 				// Function or sub token (fraction, etc...)
 				if ($token instanceof FunctionToken) {
 					$latex .= $this->latexTranslateTable($token->getName());
@@ -135,7 +149,7 @@ final class TokensToLatex
 						? $token->getVariable()->getToken()
 						: (string) MathLatexToolkit::pow(
 							$token->getVariable()->getToken(),
-							$token->getPower()->getNumber()->toLatex()
+							$token->getPower()->getNumber()->toLatex(),
 						)
 					);
 			} elseif ($token instanceof VariableToken) { // Variable (e.g. x)
@@ -156,7 +170,7 @@ final class TokensToLatex
 
 		return $this->processReplaceTable(
 			$this->processReplaceTable($latex, $this->beforeReplaceTable),
-			$this->afterReplaceTable
+			$this->afterReplaceTable,
 		);
 	}
 

@@ -10,7 +10,6 @@ use Mathematicator\Tokenizer\Token\IToken;
 
 class TokenizerException extends InvalidArgumentException
 {
-
 	/**
 	 * @param mixed $token
 	 * @throws TokenizerException
@@ -19,7 +18,7 @@ class TokenizerException extends InvalidArgumentException
 	{
 		throw new self(
 			'Token must be instance of "' . IToken::class . '", but type "'
-			. (is_object($token) ? get_class($token) : json_encode($token)) . '" given.'
+			. (is_object($token) ? get_class($token) : json_encode($token)) . '" given.',
 		);
 	}
 }

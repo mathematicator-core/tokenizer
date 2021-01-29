@@ -5,33 +5,6 @@ on:
   push:
 
 jobs:
-  code_style:
-    runs-on: ubuntu-latest
-    name: Code style check
-    steps:
-      - name: Git clone
-        uses: actions/checkout@master
-
-      - name: Install PHP
-        uses: shivammathur/setup-php@master
-        with:
-          php-version: 7.4
-          coverage: pcov
-
-      - name: Install composer dependencies
-        run: |
-          # Install code check tools
-          composer run cs:install
-          # Install app dependencies
-          composer install --no-interaction --prefer-dist
-
-      - name: Check coding standards
-        run: |
-          composer run cs:check
-
-      - name: Check PHPStan rules
-        run: composer run phpstan
-
   build:
     runs-on: ubuntu-latest
     strategy:
