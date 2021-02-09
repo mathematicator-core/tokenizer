@@ -1,68 +1,36 @@
 name: Integrity check
 
 on:
-  pull_request:
   push:
+    branches:
+      - master
+  pull_request:
+    types: [ assigned, opened, synchronize, reopened ]
+  schedule:
+    - cron: '1 * * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php: ['7.2', '7.3', '7.4', '8.0']
 
-    name: PHP ${{ matrix.php }} tests
     steps:
-      - name: Git clone
-        uses: actions/checkout@master
+    - uses: actions/checkout@master
 
-      - name: Install PHP
-        uses: shivammathur/setup-php@master
-        with:
-          php-version: ${{ matrix.php }}
-          coverage: pcov
+    - name: Install PHP
+      uses: shivammathur/setup-php@master
+      with:
+        php-version: 8.0
 
-      - name: Install composer dependencies
-        run: |
-          # Remove unnecesery packages
-          composer remove phpstan/phpstan phpstan/phpstan-nette --dev --no-interaction
-          # Install app dependencies
-          composer install --no-interaction --prefer-dist
+    - name: Install composer deps
+      run: |
+        composer create-project nette/code-checker temp/code-checker ^3 --no-progress
+        composer create-project nette/coding-standard temp/coding-standard ^3 --no-progress
 
-      - name: Run tests
-        run: composer run test
+        # Install app deps
+        composer install --no-interaction --prefer-dist
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
-          flags: unittests
-          name: codecov-umbrella
-          fail_ci_if_error: true
+    - name: The PHP Security Checker
+      uses: symfonycorp/security-checker-action@v2
 
-  benchmark:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php: ['7.4']
-
-    name: Benchmark on PHP ${{ matrix.php }}
-    steps:
-      - name: Git clone
-        uses: actions/checkout@master
-
-      - name: Install PHP
-        uses: shivammathur/setup-php@master
-        with:
-          php-version: ${{ matrix.php }}
-
-      - name: Install composer dependencies
-        run: |
-          # Install benchmarking tool
-          composer global require phpbench/phpbench @dev
-          # Install app dependencies
-          composer install --no-interaction --prefer-dist
-
-      - name: Run benchmarks
-        run: phpbench run
+    - name: Check PHPStan rules
+      run: composer phpstan

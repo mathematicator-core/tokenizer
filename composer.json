@@ -26,8 +26,8 @@
 		"brainmaestro/composer-git-hooks": "dev-master",
 		"nette/bootstrap": "^3.0.1",
 		"nette/tester": "^2.0",
-		"phpstan/phpstan": "^0.12.18",
-		"phpstan/phpstan-nette": "^0.12.6"
+		"phpstan/phpstan": "^0.12.74",
+		"phpstan/phpstan-nette": "^0.12.14"
 	},
 	"suggest": {
 		"nette/di": "(^3.0) To use package in Nette Framework"
