@@ -33,7 +33,6 @@ final class TokensToObject
 	public function toObject(array $tokens): array
 	{
 		$objects = [];
-
 		for ($iterator = 0; isset($tokens[$iterator]); $iterator++) {
 			$token = $tokens[$iterator];
 			switch ($token->type) {

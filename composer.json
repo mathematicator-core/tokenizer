@@ -17,17 +17,21 @@
 		}
 	],
 	"require": {
-		"php": ">=7.4",
+		"php": "^8.0",
 		"nette/utils": "^3.0",
 		"nette/tokenizer": "^3.0",
 		"mathematicator-core/numbers": "^2.1"
 	},
 	"require-dev": {
+		"phpstan/phpstan": "^0.12.74",
+		"tracy/tracy": "^2.8",
+		"phpstan/phpstan-nette": "^0.12.14",
+		"spaze/phpstan-disallowed-calls": "^1.1",
+		"roave/security-advisories": "dev-master",
+		"jetbrains/phpstorm-attributes": "^1.0",
 		"brainmaestro/composer-git-hooks": "dev-master",
 		"nette/bootstrap": "^3.0.1",
-		"nette/tester": "^2.0",
-		"phpstan/phpstan": "^0.12.74",
-		"phpstan/phpstan-nette": "^0.12.14"
+		"nette/tester": "^2.0"
 	},
 	"suggest": {
 		"nette/di": "(^3.0) To use package in Nette Framework"

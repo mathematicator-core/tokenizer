@@ -75,7 +75,6 @@ final class TokensToLatex
 
 	/**
 	 * @param IToken[] $tokens
-	 * @return string
 	 * @throws TokenizerException
 	 */
 	public function render(array $tokens): string
@@ -86,8 +85,6 @@ final class TokensToLatex
 
 	/**
 	 * @param IToken[] $tokens
-	 * @param int $level
-	 * @return string
 	 * @throws TokenizerException
 	 */
 	private function iterator(array $tokens, int $level = 0): string
@@ -249,7 +246,6 @@ final class TokensToLatex
 	 * Fix generated haystack by smart regular patterns.
 	 *
 	 * @param string[] $replaceTable
-	 * @return string
 	 */
 	private function processReplaceTable(string $haystack, array $replaceTable): string
 	{

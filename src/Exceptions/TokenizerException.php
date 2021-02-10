@@ -11,14 +11,13 @@ use Mathematicator\Tokenizer\Token\IToken;
 class TokenizerException extends InvalidArgumentException
 {
 	/**
-	 * @param mixed $token
 	 * @throws TokenizerException
 	 */
-	public static function tokenMustBeIToken($token): void
+	public static function tokenMustBeIToken(mixed $token): void
 	{
 		throw new self(
 			'Token must be instance of "' . IToken::class . '", but type "'
-			. (is_object($token) ? get_class($token) : json_encode($token)) . '" given.',
+			. (is_object($token) ? get_class($token) : json_encode($token, JSON_THROW_ON_ERROR)) . '" given.',
 		);
 	}
 }

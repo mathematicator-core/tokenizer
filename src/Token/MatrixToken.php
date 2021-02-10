@@ -53,10 +53,8 @@ class MatrixToken extends BaseToken
 	private function validator(array $matrix): array
 	{
 		$lastCols = null;
-
 		foreach ($matrix as $row) {
 			$cols = count($row);
-
 			if ($lastCols === null) {
 				$lastCols = $cols;
 			} elseif ($cols !== $lastCols) {

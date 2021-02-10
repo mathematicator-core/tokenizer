@@ -5,17 +5,8 @@ declare(strict_types=1);
 namespace Mathematicator\Tokenizer\Token;
 
 
-use Nette\SmartObject;
-
-/**
- * @property string $token
- * @property int $position
- * @property string $type
- */
 abstract class BaseToken implements IToken
 {
-	use SmartObject;
-
 	private string $token;
 
 	private int $position;

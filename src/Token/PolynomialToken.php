@@ -33,10 +33,12 @@ class PolynomialToken extends BaseToken
 			$power->setType(Tokens::M_NUMBER)
 				->setToken('1')
 				->setPosition($times->getPosition() + 1);
+			$this->power = $power;
+		} else {
+			$this->power = $power;
 		}
 
 		$this->times = $times;
-		$this->power = $power; // in integer formar
 		$this->variable = $variable;
 
 		$this->setToken(
