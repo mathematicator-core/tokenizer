@@ -1,13 +1,6 @@
 name: Integrity check
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    types: [ assigned, opened, synchronize, reopened ]
-  schedule:
-    - cron: '1 * * * *'
+on: [push, pull_request]
 
 jobs:
   build:
