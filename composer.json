@@ -18,7 +18,7 @@
 	],
 	"require": {
 		"php": "^8.0",
-		"nette/utils": "^3.0",
+		"nette/utils": "^3.0 || ^4.0",
 		"nette/tokenizer": "^3.0",
 		"mathematicator-core/numbers": "^2.1"
 	},
